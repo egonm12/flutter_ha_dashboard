@@ -1,0 +1,4 @@
+ignore:
+  - analyzer
+  - lints
+  - cupertino_icons
