@@ -143,7 +143,7 @@ void main() {
 
           final validAccessToken = await authorizationService.validAccessToken;
 
-          expect(validAccessToken, null);
+          expect(validAccessToken, isNull);
         });
       });
     });
