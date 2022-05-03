@@ -1,8 +1,8 @@
+import 'package:get_it/get_it.dart';
+
 import 'package:flutter_ha_dashboard/core/services/authentication_service.dart';
 import 'package:flutter_ha_dashboard/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/core/utils/app_config.dart';
-import 'package:get_it/get_it.dart';
-
 import 'core/services/authorization_service.dart';
 
 final GetIt getIt = GetIt.instance;

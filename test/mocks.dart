@@ -1,8 +1,9 @@
 import 'package:flutter_appauth/flutter_appauth.dart';
-import 'package:flutter_ha_dashboard/core/services/secure_storage_service.dart';
-import 'package:flutter_ha_dashboard/core/utils/app_config.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mocktail/mocktail.dart';
+
+import 'package:flutter_ha_dashboard/core/services/secure_storage_service.dart';
+import 'package:flutter_ha_dashboard/core/utils/app_config.dart';
 
 class MockFlutterSecureStorage extends Mock implements FlutterSecureStorage {}
 
