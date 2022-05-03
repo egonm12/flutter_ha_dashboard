@@ -6,7 +6,7 @@ part 'api_client.g.dart';
 
 @RestApi(baseUrl: "https://meijers-hassio.duckdns.org/api")
 abstract class ApiClient {
-  factory ApiClient(Dio dio, {String baseUrl}) = _RestClient;
+  factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
 
   @GET("/tasks")
   Future<List<Task>> getTasks();

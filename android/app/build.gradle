@@ -42,12 +42,15 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_ha_dashboard"
-        minSdkVersion flutter.minSdkVersion
+        // TODO: Specify yoSur own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.aegon.dashboard"
+        minSdkVersion 26
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders += [
+            'appAuthRedirectScheme': 'com.aegon.dashboard'
+        ]
     }
 
     buildTypes {
