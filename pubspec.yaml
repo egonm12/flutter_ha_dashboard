@@ -36,7 +36,6 @@ dependencies:
   cupertino_icons: ^1.0.4
   flutter_secure_storage: ^5.0.2
   flutter_secure_storage_web: ^1.0.2
-  logger: any
   flutter_appauth: ^2.4.1
   get_it: ^7.2.0
   state_notifier: ^0.7.2+1

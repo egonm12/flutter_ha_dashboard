@@ -1,11 +1,13 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+
+import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
+
+import 'package:flutter_ha_dashboard/service_locator.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/src/core/utils/app_config.dart';
-import 'package:flutter_ha_dashboard/service_locator.dart';
 
 class AuthenticationRepository {
   /// {@macro AuthenticationRepository}

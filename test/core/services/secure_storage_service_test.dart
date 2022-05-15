@@ -2,7 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:flutter_ha_dashboard/core/services/secure_storage_service.dart';
+import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import '../../mocks.dart';
 
 void main() {
