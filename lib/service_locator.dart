@@ -1,9 +1,7 @@
+import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
+import 'package:flutter_ha_dashboard/src/core/utils/app_config.dart';
+import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
 import 'package:get_it/get_it.dart';
-
-import 'package:flutter_ha_dashboard/core/services/authentication_service.dart';
-import 'package:flutter_ha_dashboard/core/services/secure_storage_service.dart';
-import 'package:flutter_ha_dashboard/core/utils/app_config.dart';
-import 'core/services/authorization_service.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -18,10 +16,7 @@ void setUp() {
   getIt.registerLazySingleton<SecureStorageService>(
     () => SecureStorageService(),
   );
-  getIt.registerLazySingleton<AuthenticationService>(
-    () => AuthenticationService(),
-  );
-  getIt.registerLazySingleton<AuthorizationService>(
-    () => AuthorizationService(),
+  getIt.registerLazySingleton<AuthenticationRepository>(
+    () => AuthenticationRepository(),
   );
 }
