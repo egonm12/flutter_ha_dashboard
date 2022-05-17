@@ -15,7 +15,7 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateNotifierProvider<SignInScreenController, AsyncValue<String>>(
       create: (_) => SignInScreenController(
-        authenticationRepository: getIt<AuthenticationRepository>(),
+        authenticationRepository: serviceLocator<AuthenticationRepository>(),
       ),
       builder: (context, widget) {
         final state = context.watch<AsyncValue<String>>();

@@ -193,5 +193,21 @@ void main() {
         ).called(1);
       });
     });
+
+    group('deleteAll', () {
+      test(
+          'calls FlutterSecureStorage.deleteAll to delete all keys with associated values',
+          () async {
+        when(() => flutterSecureStorage.deleteAll()).thenAnswer(
+          (_) => Future.value(),
+        );
+
+        await secureStorageService.deleteAll();
+
+        verify(
+          () => flutterSecureStorage.deleteAll(),
+        ).called(1);
+      });
+    });
   });
 }

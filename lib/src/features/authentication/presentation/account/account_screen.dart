@@ -15,7 +15,7 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateNotifierProvider<AccountScreenController, AsyncValue<void>>(
       create: (_) => AccountScreenController(
-        authenticationRepository: getIt<AuthenticationRepository>(),
+        authenticationRepository: serviceLocator<AuthenticationRepository>(),
       ),
       builder: (context, widget) => Center(
         child: ElevatedButton(

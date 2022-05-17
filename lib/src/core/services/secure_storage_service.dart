@@ -61,6 +61,9 @@ class SecureStorageService {
     return DateTime.parse(iso8601ExpirationDate);
   }
 
+  /// Deletes all keys with associated values from [FlutterSecureStorage]
+  Future<void> deleteAll() async => await _flutterSecureStorage.deleteAll();
+
   /// Saves the [expirationDate] to [FlutterSecureStorage] using [accessTokenExpirationDateKey]
   Future<void> writeAccessTokenExpirationDate(DateTime expirationDate) async {
     await _flutterSecureStorage.write(
