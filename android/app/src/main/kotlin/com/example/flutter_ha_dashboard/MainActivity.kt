@@ -1,4 +1,4 @@
-package com.example.flutter_ha_dashboard
+package com.aegon.dashboard
 
 import io.flutter.embedding.android.FlutterActivity
 
