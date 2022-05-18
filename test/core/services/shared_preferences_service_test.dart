@@ -1,8 +1,8 @@
-import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
 import '../../mocks.dart';
 
 void main() {
