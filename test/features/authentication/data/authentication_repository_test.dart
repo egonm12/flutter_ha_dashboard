@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -7,7 +9,7 @@ import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.da
 import 'package:flutter_ha_dashboard/src/core/utils/app_config.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
 import '../../../fakes.dart';
-import '../../../mocks.dart';
+import '../../../mocks/mocks.dart';
 
 void main() {
   group('AuthenticationRepository', () {
@@ -92,6 +94,9 @@ void main() {
         verify(
           () => secureStorageService.writeRefreshToken(refreshToken),
         ).called(1);
+
+        expect(authenticationRepository.isAuthenticated, true);
+        expect(authenticationRepository.authStateChanges(), emits(true));
       });
 
       test('''
@@ -114,15 +119,22 @@ void main() {
         verifyNever(
           () => secureStorageService.writeRefreshToken(any()),
         );
+
+        expect(authenticationRepository.isAuthenticated, false);
+        expect(authenticationRepository.authStateChanges(), emits(false));
       });
 
-      test('''
-      does not write refresh token, access token and expiration date to secure 
-      storage when request is unsuccessful''', () async {
-        const error = 'Something went wrong';
+      test(
+          'does not write refresh token, access token and expiration date to secure storage when request is unsuccessful',
+          () async {
+        final error =
+            PlatformException(code: 'Error', message: 'Something went wrong');
         when(() => appAuth.authorizeAndExchangeCode(any())).thenThrow(error);
 
-        await authenticationRepository.authenticate();
+        expect(
+          () async => await authenticationRepository.authenticate(),
+          throwsA(isA<PlatformException>()),
+        );
 
         verifyNever(
           () => secureStorageService.writeAccessToken(any()),
@@ -135,6 +147,9 @@ void main() {
         verifyNever(
           () => secureStorageService.writeRefreshToken(any()),
         );
+
+        expect(authenticationRepository.isAuthenticated, false);
+        expect(authenticationRepository.authStateChanges(), emits(false));
       });
     });
 
@@ -158,6 +173,9 @@ void main() {
 
           verify(() => apiService.revokeRefreshToken(any())).called(1);
           verify(secureStorageService.deleteAll).called(1);
+
+          expect(authenticationRepository.isAuthenticated, false);
+          expect(authenticationRepository.authStateChanges(), emits(false));
         });
       });
 

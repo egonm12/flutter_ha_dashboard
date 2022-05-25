@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter_appauth/flutter_appauth.dart';
+import 'package:rxdart/rxdart.dart';
 
 import 'package:flutter_ha_dashboard/service_locator.dart';
 import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
@@ -15,6 +18,8 @@ class AuthenticationRepository {
     AppConfig? appConfig,
     ApiService? apiService,
   }) {
+    _authState = BehaviorSubject<bool>.seeded(false);
+
     _instance = AuthenticationRepository._internal(
       secureStorageService ?? serviceLocator<SecureStorageService>(),
       appAuth ?? FlutterAppAuth(),
@@ -31,6 +36,8 @@ class AuthenticationRepository {
   /// Private instance of [AuthenticationRepository]
   static late final AuthenticationRepository _instance;
 
+  static late final BehaviorSubject<bool> _authState;
+
   late final SecureStorageService _secureStorageService;
   late final FlutterAppAuth _appAuth;
   late final AppConfig _appConfig;
@@ -44,37 +51,43 @@ class AuthenticationRepository {
     this._apiService,
   );
 
+  Stream<bool> authStateChanges() => _authState.stream;
+  bool get isAuthenticated => _authState.value;
+
+  Future<void> dispose() async => await _authState.close();
+
   /// Callback used to authenticate a user. Calls [FlutterAppAuth.authorizeAndExchangeCode]
   /// and calls [SecureStorageService] to save the refresh token, access token
   /// and access token expiration date on success.
   ///
   /// https://developers.home-assistant.io/docs/auth_api/#authorize
   Future<void> authenticate() async {
-    try {
-      final AuthorizationTokenResponse? response =
-          await _appAuth.authorizeAndExchangeCode(
-        AuthorizationTokenRequest(
-          _appConfig.oauthClientId,
-          _appConfig.oauthRedirectUri,
-          issuer: 'https://meijers-hassio.duckdns.org/auth/authorize',
-          serviceConfiguration: const AuthorizationServiceConfiguration(
-            tokenEndpoint: 'https://meijers-hassio.duckdns.org/auth/token',
-            authorizationEndpoint:
-                'https://meijers-hassio.duckdns.org/auth/authorize',
-          ),
+    final AuthorizationTokenResponse? response =
+        await _appAuth.authorizeAndExchangeCode(
+      AuthorizationTokenRequest(
+        _appConfig.oauthClientId,
+        _appConfig.oauthRedirectUri,
+        issuer: 'https://meijers-hassio.duckdns.org/auth/authorize',
+        serviceConfiguration: const AuthorizationServiceConfiguration(
+          tokenEndpoint: 'https://meijers-hassio.duckdns.org/auth/token',
+          authorizationEndpoint:
+              'https://meijers-hassio.duckdns.org/auth/authorize',
         ),
-      );
+      ),
+    );
 
-      if (response == null) return;
-
-      _secureStorageService.writeRefreshToken(response.refreshToken!);
-      _secureStorageService.writeAccessToken(response.accessToken!);
-      _secureStorageService.writeAccessTokenExpirationDate(
-        response.accessTokenExpirationDateTime!,
-      );
-    } catch (e) {
-      debugPrint(e.toString());
+    if (response == null) {
+      _authState.value = false;
+      return;
     }
+
+    _secureStorageService.writeRefreshToken(response.refreshToken!);
+    _secureStorageService.writeAccessToken(response.accessToken!);
+    _secureStorageService.writeAccessTokenExpirationDate(
+      response.accessTokenExpirationDateTime!,
+    );
+
+    _authState.value = true;
   }
 
   /// Revokes the refresh token and all access tokens
@@ -92,6 +105,8 @@ class AuthenticationRepository {
       });
 
       await _secureStorageService.deleteAll();
+
+      _authState.value = false;
     } catch (e) {
       debugPrint(e.toString());
     }

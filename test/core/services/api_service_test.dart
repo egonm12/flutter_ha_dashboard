@@ -7,7 +7,7 @@ import 'package:retrofit/retrofit.dart';
 
 import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import '../../fakes.dart';
-import '../../mocks.dart';
+import '../../mocks/mocks.dart';
 
 void main() {
   group('ApiService', () {
