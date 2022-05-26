@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show AsyncValue;
 
 import 'package:flutter_ha_dashboard/service_locator.dart';
-import 'package:flutter_ha_dashboard/src/core/widgets/async_value/async_value_widget.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/sign_in/sign_in_cubit.dart';
+import 'package:flutter_ha_dashboard/src/widgets/async_value/async_value_widget.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);

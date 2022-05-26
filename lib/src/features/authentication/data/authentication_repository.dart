@@ -8,7 +8,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:flutter_ha_dashboard/service_locator.dart';
 import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
-import 'package:flutter_ha_dashboard/src/core/utils/app_config.dart';
+import 'package:flutter_ha_dashboard/src/utils/app_config.dart';
 
 class AuthenticationRepository {
   /// {@macro AuthenticationRepository}

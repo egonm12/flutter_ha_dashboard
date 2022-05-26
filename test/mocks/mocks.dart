@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
-import 'package:flutter_ha_dashboard/src/core/utils/app_config.dart';
+import 'package:flutter_ha_dashboard/src/utils/app_config.dart';
 
 /// Simple mock class that can be used to mock and verify if a callback is called
 class MockFunction extends Mock {
