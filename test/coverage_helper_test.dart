@@ -11,7 +11,6 @@ import 'package:flutter_ha_dashboard/service_locator.dart';
 import 'package:flutter_ha_dashboard/src/app.dart';
 import 'package:flutter_ha_dashboard/src/core/routing/route_name.dart';
 import 'package:flutter_ha_dashboard/src/core/routing/router.dart';
-import 'package:flutter_ha_dashboard/src/core/routing/router_notifier.dart';
 import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
