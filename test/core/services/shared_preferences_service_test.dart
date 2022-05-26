@@ -3,7 +3,7 @@ import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
-import '../../mocks.dart';
+import '../../mocks/mocks.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -36,7 +36,9 @@ void main() {
 
         verify(
           () => sharedPreferences.setString(
-              'home_assistant_url', homeAssistantUrl),
+            sharedPreferencesService.homeAssistantUrlKey,
+            homeAssistantUrl,
+          ),
         );
       });
 
@@ -46,7 +48,36 @@ void main() {
         sharedPreferencesService.homeAssistantUrl;
 
         verify(
-          () => sharedPreferences.getString('home_assistant_url'),
+          () => sharedPreferences.getString(
+            sharedPreferencesService.homeAssistantUrlKey,
+          ),
+        );
+      });
+    });
+
+    group('firstRun', () {
+      const bool firstRun = true;
+
+      test(
+          'calls SharedPreferences.setBool with the correct key and value when calling setter',
+          () {
+        sharedPreferencesService.firstRun = firstRun;
+
+        verify(
+          () => sharedPreferences.setBool(
+            sharedPreferencesService.firstRunKey,
+            firstRun,
+          ),
+        );
+      });
+
+      test(
+          'calls SharedPreferences.getBool with the correct key when calling getter',
+          () {
+        sharedPreferencesService.firstRun;
+
+        verify(
+          () => sharedPreferences.getBool(sharedPreferencesService.firstRunKey),
         );
       });
     });

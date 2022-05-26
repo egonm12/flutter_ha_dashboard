@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// {@template SharedPreferencesService}
@@ -32,10 +34,20 @@ class SharedPreferencesService {
   }
 
   static const _homeAssistantUrlKey = 'home_assistant_url';
+  static const _firstRunKey = 'first_run';
 
   String get homeAssistantUrl =>
       _sharedPreferences!.getString(_homeAssistantUrlKey) ?? '';
 
   set homeAssistantUrl(String value) =>
       _sharedPreferences!.setString(_homeAssistantUrlKey, value);
+
+  bool get firstRun => _sharedPreferences!.getBool(_firstRunKey) ?? true;
+
+  set firstRun(bool value) => _sharedPreferences!.setBool(_firstRunKey, value);
+
+  @visibleForTesting
+  String get homeAssistantUrlKey => _homeAssistantUrlKey;
+  @visibleForTesting
+  String get firstRunKey => _firstRunKey;
 }

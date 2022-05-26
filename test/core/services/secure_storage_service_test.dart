@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
-import '../../mocks.dart';
+import '../../mocks/mocks.dart';
 
 void main() {
   group('SecureStorageService', () {

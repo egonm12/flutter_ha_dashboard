@@ -24,6 +24,8 @@ void setUp() {
   );
   serviceLocator.registerLazySingleton<AuthenticationRepository>(
     () => AuthenticationRepository(),
+    dispose: (authenticationRepository) async =>
+        await authenticationRepository.dispose(),
   );
   serviceLocator.registerLazySingleton<Dio>(
     () => Dio(
