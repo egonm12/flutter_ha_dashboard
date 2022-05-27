@@ -19,8 +19,8 @@ void setUp() {
       oauthRedirectUri: 'com.aegon.dashboard:/',
     ),
   );
-  serviceLocator.registerSingletonAsync<SharedPreferencesService>(
-    () async => SharedPreferencesService()..init(),
+  serviceLocator.registerSingleton<SharedPreferencesService>(
+    SharedPreferencesService(),
   );
   serviceLocator.registerLazySingleton<AuthenticationRepository>(
     () => AuthenticationRepository(),
@@ -49,11 +49,9 @@ void setUp() {
         ),
       ),
   );
-  serviceLocator.registerSingletonAsync<ApiService>(
-    () async {
-      return ApiService(serviceLocator<Dio>());
-    },
-    dependsOn: [SharedPreferencesService],
+  serviceLocator.registerSingleton<ApiService>(
+    ApiService(serviceLocator<Dio>()),
+    // dependsOn: [SharedPreferencesService],
   );
   serviceLocator.registerLazySingleton<SecureStorageService>(
     () => SecureStorageService(),
