@@ -37,7 +37,7 @@ void main() {
         initState,
         const AppState(
           appStatus: AppStatus.uninitialized(),
-          appSettings: AppInfo(
+          appSettings: AppSettings(
             homeAssistantUrl: homeAssistantUrl,
             themeMode: themeMode,
           ),

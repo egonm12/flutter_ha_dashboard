@@ -7,11 +7,11 @@ class AppState extends Equatable {
   });
 
   final AppStatus appStatus;
-  final AppInfo appSettings;
+  final AppSettings appSettings;
 
   AppState copyWith({
     AppStatus? appStatus,
-    AppInfo? appSettings,
+    AppSettings? appSettings,
   }) =>
       AppState(
         appStatus: appStatus ?? this.appStatus,
@@ -28,8 +28,8 @@ class AppStatus with _$AppStatus {
   const factory AppStatus.initialized() = _StatusInitialized;
 }
 
-class AppInfo extends Equatable {
-  const AppInfo({
+class AppSettings extends Equatable {
+  const AppSettings({
     required this.homeAssistantUrl,
     required this.themeMode,
   });
@@ -37,11 +37,11 @@ class AppInfo extends Equatable {
   final String homeAssistantUrl;
   final ThemeMode themeMode;
 
-  AppInfo copyWith({
+  AppSettings copyWith({
     String? homeAssistantUrl,
     ThemeMode? themeMode,
   }) =>
-      AppInfo(
+      AppSettings(
         homeAssistantUrl: homeAssistantUrl ?? this.homeAssistantUrl,
         themeMode: themeMode ?? this.themeMode,
       );

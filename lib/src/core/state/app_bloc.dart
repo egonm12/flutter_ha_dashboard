@@ -26,7 +26,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         super(
           AppState(
             appStatus: const AppStatus.uninitialized(),
-            appSettings: AppInfo(
+            appSettings: AppSettings(
               homeAssistantUrl: (sharedPreferencesService ??
                       serviceLocator<SharedPreferencesService>())
                   .homeAssistantUrl,
