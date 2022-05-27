@@ -20,18 +20,21 @@ mixin _$AppEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initializeApp,
     required TResult Function(ThemeMode themeMode) changeThemeMode,
+    required TResult Function() toggleThemeMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$AppEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitializeApp value) initializeApp,
     required TResult Function(_ChangeThemeMode value) changeThemeMode,
+    required TResult Function(_ToggleThemeMode value) toggleThemeMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +125,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
   TResult when<TResult extends Object?>({
     required TResult Function() initializeApp,
     required TResult Function(ThemeMode themeMode) changeThemeMode,
+    required TResult Function() toggleThemeMode,
   }) {
     return initializeApp();
   }
@@ -128,6 +135,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
   }) {
     return initializeApp?.call();
   }
@@ -137,6 +145,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
     required TResult orElse(),
   }) {
     if (initializeApp != null) {
@@ -150,6 +159,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitializeApp value) initializeApp,
     required TResult Function(_ChangeThemeMode value) changeThemeMode,
+    required TResult Function(_ToggleThemeMode value) toggleThemeMode,
   }) {
     return initializeApp(this);
   }
@@ -159,6 +169,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
   }) {
     return initializeApp?.call(this);
   }
@@ -168,6 +179,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
     required TResult orElse(),
   }) {
     if (initializeApp != null) {
@@ -258,6 +270,7 @@ class _$_ChangeThemeMode
   TResult when<TResult extends Object?>({
     required TResult Function() initializeApp,
     required TResult Function(ThemeMode themeMode) changeThemeMode,
+    required TResult Function() toggleThemeMode,
   }) {
     return changeThemeMode(themeMode);
   }
@@ -267,6 +280,7 @@ class _$_ChangeThemeMode
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
   }) {
     return changeThemeMode?.call(themeMode);
   }
@@ -276,6 +290,7 @@ class _$_ChangeThemeMode
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
     required TResult orElse(),
   }) {
     if (changeThemeMode != null) {
@@ -289,6 +304,7 @@ class _$_ChangeThemeMode
   TResult map<TResult extends Object?>({
     required TResult Function(_InitializeApp value) initializeApp,
     required TResult Function(_ChangeThemeMode value) changeThemeMode,
+    required TResult Function(_ToggleThemeMode value) toggleThemeMode,
   }) {
     return changeThemeMode(this);
   }
@@ -298,6 +314,7 @@ class _$_ChangeThemeMode
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
   }) {
     return changeThemeMode?.call(this);
   }
@@ -307,6 +324,7 @@ class _$_ChangeThemeMode
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
     required TResult orElse(),
   }) {
     if (changeThemeMode != null) {
@@ -324,6 +342,125 @@ abstract class _ChangeThemeMode implements AppEvent {
   @JsonKey(ignore: true)
   _$$_ChangeThemeModeCopyWith<_$_ChangeThemeMode> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_ToggleThemeModeCopyWith<$Res> {
+  factory _$$_ToggleThemeModeCopyWith(
+          _$_ToggleThemeMode value, $Res Function(_$_ToggleThemeMode) then) =
+      __$$_ToggleThemeModeCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ToggleThemeModeCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res>
+    implements _$$_ToggleThemeModeCopyWith<$Res> {
+  __$$_ToggleThemeModeCopyWithImpl(
+      _$_ToggleThemeMode _value, $Res Function(_$_ToggleThemeMode) _then)
+      : super(_value, (v) => _then(v as _$_ToggleThemeMode));
+
+  @override
+  _$_ToggleThemeMode get _value => super._value as _$_ToggleThemeMode;
+}
+
+/// @nodoc
+
+class _$_ToggleThemeMode
+    with DiagnosticableTreeMixin
+    implements _ToggleThemeMode {
+  const _$_ToggleThemeMode();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AppEvent.toggleThemeMode()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'AppEvent.toggleThemeMode'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ToggleThemeMode);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initializeApp,
+    required TResult Function(ThemeMode themeMode) changeThemeMode,
+    required TResult Function() toggleThemeMode,
+  }) {
+    return toggleThemeMode();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initializeApp,
+    TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
+  }) {
+    return toggleThemeMode?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initializeApp,
+    TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
+    required TResult orElse(),
+  }) {
+    if (toggleThemeMode != null) {
+      return toggleThemeMode();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_ChangeThemeMode value) changeThemeMode,
+    required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+  }) {
+    return toggleThemeMode(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+  }) {
+    return toggleThemeMode?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    required TResult orElse(),
+  }) {
+    if (toggleThemeMode != null) {
+      return toggleThemeMode(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleThemeMode implements AppEvent {
+  const factory _ToggleThemeMode() = _$_ToggleThemeMode;
 }
 
 /// @nodoc

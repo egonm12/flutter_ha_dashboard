@@ -8,6 +8,9 @@ final ThemeData lightTheme = baseTheme.copyWith(
   primaryColor: AppColors.light.primaryColor,
   primaryColorLight: AppColors.light.primaryLightColor,
   primaryColorDark: AppColors.light.primaryDarkColor,
+  appBarTheme: AppBarTheme(
+    backgroundColor: AppColors.light.primaryColor,
+  ),
   scaffoldBackgroundColor: AppColors.light.secondaryColor,
   extensions: <ThemeExtension<dynamic>>[
     AppSizes.defaultSizes,

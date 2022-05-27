@@ -38,6 +38,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         ) {
     on<_InitializeApp>(_initializeApp);
     on<_ChangeThemeMode>(_changeThemeMode);
+    on<_ToggleThemeMode>(_toggleThemeMode);
   }
 
   final SharedPreferencesService _sharedPreferencesService;
@@ -67,6 +68,25 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     Emitter<AppState> emit,
   ) {
     final _themeMode = event.themeMode;
+
+    _sharedPreferencesService.themeMode = _themeMode;
+
+    emit(
+      state.copyWith(
+        appSettings: state.appSettings.copyWith(
+          themeMode: _themeMode,
+        ),
+      ),
+    );
+  }
+
+  void _toggleThemeMode(
+    _ToggleThemeMode event,
+    Emitter<AppState> emit,
+  ) {
+    final _themeMode = state.appSettings.themeMode == ThemeMode.dark
+        ? ThemeMode.light
+        : ThemeMode.dark;
 
     _sharedPreferencesService.themeMode = _themeMode;
 

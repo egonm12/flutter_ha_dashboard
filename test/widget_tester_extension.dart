@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,13 +12,28 @@ extension WidgetTesterExtension on WidgetTester {
   Future<void> pumpRouterApp(
     Widget widget, {
     MockGoRouter? router,
+    List<BlocProvider> blocProviders = const [],
+    List<RepositoryProvider<dynamic>> repositoryProviders = const [],
   }) async {
-    final Widget app = MaterialApp(
+    Widget app = MaterialApp(
       home: InheritedGoRouter(
         child: widget,
         goRouter: router ?? MockGoRouter(),
       ),
     );
+
+    if (blocProviders.isNotEmpty) {
+      app = MultiBlocProvider(
+        providers: blocProviders,
+        child: app,
+      );
+    }
+    if (repositoryProviders.isNotEmpty) {
+      app = MultiRepositoryProvider(
+        providers: repositoryProviders,
+        child: app,
+      );
+    }
 
     return pumpWidget(app);
   }

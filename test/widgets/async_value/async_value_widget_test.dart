@@ -6,8 +6,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
 import 'package:flutter_ha_dashboard/src/widgets/async_value/async_value_widget.dart';
-import '../mocks/mocks.dart';
-import '../widget_tester_extension.dart';
+import '../../mocks/mocks.dart';
+import '../../widget_tester_extension.dart';
 
 void main() {
   group('AsyncValueWidget', () {

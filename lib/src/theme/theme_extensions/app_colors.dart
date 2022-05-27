@@ -56,7 +56,21 @@ class AppColors extends ThemeExtension<AppColors> {
 
   @override
   ThemeExtension<AppColors> lerp(ThemeExtension<AppColors>? other, double t) {
-    return this;
+    if (other is! AppColors) {
+      return this;
+    }
+    return AppColors(
+      primaryColor: Color.lerp(primaryColor, other.primaryColor, t)!,
+      primaryLightColor:
+          Color.lerp(primaryLightColor, other.primaryLightColor, t)!,
+      primaryDarkColor:
+          Color.lerp(primaryDarkColor, other.primaryDarkColor, t)!,
+      secondaryColor: Color.lerp(secondaryColor, other.secondaryColor, t)!,
+      secondaryLightColor:
+          Color.lerp(secondaryLightColor, other.secondaryLightColor, t)!,
+      secondaryDarkColor:
+          Color.lerp(secondaryDarkColor, other.secondaryDarkColor, t)!,
+    );
   }
 
   static const _baseDarkGrey = Color(0xFF263238);
