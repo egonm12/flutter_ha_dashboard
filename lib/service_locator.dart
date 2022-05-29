@@ -51,7 +51,6 @@ void setUp() {
   );
   serviceLocator.registerSingleton<ApiService>(
     ApiService(serviceLocator<Dio>()),
-    // dependsOn: [SharedPreferencesService],
   );
   serviceLocator.registerLazySingleton<SecureStorageService>(
     () => SecureStorageService(),
