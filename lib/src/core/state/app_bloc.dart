@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,14 +23,28 @@ class AppBloc extends Bloc<AppEvent, AppState> {
             serviceLocator<SharedPreferencesService>(),
         _secureStorageService =
             secureStorageService ?? serviceLocator<SecureStorageService>(),
-        super(const AppState.uninitialized()) {
+        super(
+          AppState(
+            appStatus: const AppStatus.uninitialized(),
+            appSettings: AppSettings(
+              homeAssistantUrl: (sharedPreferencesService ??
+                      serviceLocator<SharedPreferencesService>())
+                  .homeAssistantUrl,
+              themeMode: (sharedPreferencesService ??
+                      serviceLocator<SharedPreferencesService>())
+                  .themeMode,
+            ),
+          ),
+        ) {
     on<_InitializeApp>(_initializeApp);
+    on<_ChangeThemeMode>(_changeThemeMode);
+    on<_ToggleThemeMode>(_toggleThemeMode);
   }
 
   final SharedPreferencesService _sharedPreferencesService;
   final SecureStorageService _secureStorageService;
 
-  /// Calls [_cleanIfFirstUseAfterUninstall] and emits [AppState.initialized]
+  /// Calls [_cleanIfFirstUseAfterUninstall] and emits [AppStatus.initialized]
   /// when done.
   Future<void> _initializeApp(
     _InitializeApp event,
@@ -39,8 +55,48 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     } catch (e) {
       debugPrint(e.toString());
     } finally {
-      emit(const AppState.initialized());
+      emit(
+        state.copyWith(
+          appStatus: const AppStatus.initialized(),
+        ),
+      );
     }
+  }
+
+  void _changeThemeMode(
+    _ChangeThemeMode event,
+    Emitter<AppState> emit,
+  ) {
+    final _themeMode = event.themeMode;
+
+    _sharedPreferencesService.themeMode = _themeMode;
+
+    emit(
+      state.copyWith(
+        appSettings: state.appSettings.copyWith(
+          themeMode: _themeMode,
+        ),
+      ),
+    );
+  }
+
+  void _toggleThemeMode(
+    _ToggleThemeMode event,
+    Emitter<AppState> emit,
+  ) {
+    final _themeMode = state.appSettings.themeMode == ThemeMode.dark
+        ? ThemeMode.light
+        : ThemeMode.dark;
+
+    _sharedPreferencesService.themeMode = _themeMode;
+
+    emit(
+      state.copyWith(
+        appSettings: state.appSettings.copyWith(
+          themeMode: _themeMode,
+        ),
+      ),
+    );
   }
 
   /// Checks [SharedPreferencesService.firstRun] if the application is running

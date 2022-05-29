@@ -6,8 +6,8 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
-import 'package:flutter_ha_dashboard/src/core/utils/app_config.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
+import 'package:flutter_ha_dashboard/src/utils/app_config.dart';
 
 final GetIt serviceLocator = GetIt.instance;
 
@@ -19,8 +19,8 @@ void setUp() {
       oauthRedirectUri: 'com.aegon.dashboard:/',
     ),
   );
-  serviceLocator.registerSingletonAsync<SharedPreferencesService>(
-    () async => SharedPreferencesService()..init(),
+  serviceLocator.registerSingleton<SharedPreferencesService>(
+    SharedPreferencesService(),
   );
   serviceLocator.registerLazySingleton<AuthenticationRepository>(
     () => AuthenticationRepository(),
@@ -49,11 +49,8 @@ void setUp() {
         ),
       ),
   );
-  serviceLocator.registerSingletonAsync<ApiService>(
-    () async {
-      return ApiService(serviceLocator<Dio>());
-    },
-    dependsOn: [SharedPreferencesService],
+  serviceLocator.registerSingleton<ApiService>(
+    ApiService(serviceLocator<Dio>()),
   );
   serviceLocator.registerLazySingleton<SecureStorageService>(
     () => SecureStorageService(),
