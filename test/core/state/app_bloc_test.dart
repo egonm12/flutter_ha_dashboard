@@ -86,7 +86,6 @@ void main() {
     blocTest<AppBloc, AppState>(
       '''emits [AppSettings(themeMode: ThemeMode.dark)] when theme is changed to
       ThemeMode.dark and saves it in shared preferences''',
-      setUp: () {},
       build: createAppBloc,
       act: (appBloc) => appBloc.add(
         const AppEvent.changeThemeMode(ThemeMode.dark),
@@ -100,6 +99,39 @@ void main() {
       ],
       verify: (_) {
         verify(() => sharedPreferencesService.themeMode = ThemeMode.dark)
+            .called(1);
+      },
+    );
+
+    blocTest<AppBloc, AppState>(
+      '''emits [AppSettings(themeMode: ThemeMode.dark)] when theme is toggled from
+      ThemeMode.light and saves it in shared preferences''',
+      setUp: () {
+        when(() => sharedPreferencesService.themeMode).thenReturn(
+          ThemeMode.light,
+        );
+      },
+      build: createAppBloc,
+      act: (appBloc) {
+        appBloc.add(const AppEvent.toggleThemeMode());
+        appBloc.add(const AppEvent.toggleThemeMode());
+      },
+      expect: () => [
+        initState.copyWith(
+          appSettings: initState.appSettings.copyWith(
+            themeMode: ThemeMode.dark,
+          ),
+        ),
+        initState.copyWith(
+          appSettings: initState.appSettings.copyWith(
+            themeMode: ThemeMode.light,
+          ),
+        ),
+      ],
+      verify: (_) {
+        verify(() => sharedPreferencesService.themeMode = ThemeMode.dark)
+            .called(1);
+        verify(() => sharedPreferencesService.themeMode = ThemeMode.light)
             .called(1);
       },
     );
