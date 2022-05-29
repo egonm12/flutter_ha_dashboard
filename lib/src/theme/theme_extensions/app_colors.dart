@@ -19,12 +19,12 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color secondaryDarkColor;
 
   static const light = AppColors(
-    primaryColor: _baseDarkGrey,
-    primaryLightColor: _baseGrey,
-    primaryDarkColor: _baseBlack,
-    secondaryColor: _baseLightGrey,
-    secondaryLightColor: _baseWhite,
-    secondaryDarkColor: _baseBlueGrey,
+    primaryColor: gunMetal,
+    primaryLightColor: stormCloud,
+    primaryDarkColor: richBlack,
+    secondaryColor: brightGray,
+    secondaryLightColor: white,
+    secondaryDarkColor: gray,
   );
 
   static const dark = AppColors(
@@ -73,14 +73,7 @@ class AppColors extends ThemeExtension<AppColors> {
     );
   }
 
-  static const _baseDarkGrey = Color(0xFF263238);
-  static const _baseGrey = Color(0xFF4F5B62);
-  static const _baseBlack = Color(0xFF000A12);
-  static const _baseLightGrey = Color(0xFFECEFF1);
-  static const _baseBlueGrey = Color(0xFFBABDBE);
-  static const _baseWhite = Color(0xFFFFFFFF);
-
-  static const gunMetal = Color(0xFF382C26);
+  static const gunMetal = Color(0xFF263238);
   static const charcoal = Color(0xFF37474F);
   static const darkElectricBlue = Color(0xFF62727b);
   static const darkJungleGreen = Color(0xFF102027);
