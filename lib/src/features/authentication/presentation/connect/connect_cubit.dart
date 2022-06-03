@@ -18,7 +18,7 @@ class ConnectCubit extends Cubit<ConnectState> {
 
   /// Opens the in-app browser to authenticate the user.
   ///
-  /// Will 3 possible states for [AsyncValue]
+  /// Emits:
   /// - [AsyncValue.loading] when the request is in progress.
   /// - [AsyncValue.data] when the request returned with data.
   /// - [AsyncValue.error] when the request returned with an error.
