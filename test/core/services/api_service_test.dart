@@ -16,7 +16,7 @@ void main() {
 
     setUpAll(() {
       registerFallbackValue(FakeResponse<void>());
-      registerFallbackValue(MockRequestOptions());
+      registerFallbackValue(FakeRequestOptions());
 
       dio = MockDio();
       apiService = ApiService(dio);

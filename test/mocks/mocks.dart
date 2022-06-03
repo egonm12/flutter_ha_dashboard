@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_appauth/flutter_appauth.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
@@ -10,6 +13,8 @@ import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
 import 'package:flutter_ha_dashboard/src/core/state/app_bloc.dart';
+import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
+import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_cubit.dart';
 import 'package:flutter_ha_dashboard/src/utils/app_config.dart';
 
 /// Simple mock class that can be used to mock and verify if a callback is called
@@ -37,3 +42,25 @@ class MockApiService extends Mock implements ApiService {}
 class MockGoRouter extends Mock implements GoRouter {}
 
 class MockAppBloc extends MockBloc<AppEvent, AppState> implements AppBloc {}
+
+class MockConnectCubit extends MockCubit<ConnectState> implements ConnectCubit {
+}
+
+class MockAuthenticationRepository extends Mock
+    implements AuthenticationRepository {}
+
+class MockFormBuilderState extends Mock implements FormBuilderState {
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.debug}) =>
+      super.toString();
+}
+
+class MockFormBuilderKey extends Mock
+    implements GlobalKey<MockFormBuilderState> {
+  MockFormBuilderKey(this.formBuilderState);
+
+  final MockFormBuilderState formBuilderState;
+
+  @override
+  MockFormBuilderState get currentState => formBuilderState;
+}

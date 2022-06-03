@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:flutter_ha_dashboard/src/theme/dark_theme.dart';
+import 'package:flutter_ha_dashboard/src/theme/light_theme.dart';
 import 'mocks/mocks.dart';
 
 extension WidgetTesterExtension on WidgetTester {
@@ -16,6 +19,12 @@ extension WidgetTesterExtension on WidgetTester {
     List<RepositoryProvider<dynamic>> repositoryProviders = const [],
   }) async {
     Widget app = MaterialApp(
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      themeMode: ThemeMode.light,
+      localizationsDelegates: const [
+        FormBuilderLocalizations.delegate,
+      ],
       home: InheritedGoRouter(
         child: widget,
         goRouter: router ?? MockGoRouter(),
@@ -35,6 +44,7 @@ extension WidgetTesterExtension on WidgetTester {
       );
     }
 
-    return pumpWidget(app);
+    await pumpWidget(app);
+    await pump();
   }
 }

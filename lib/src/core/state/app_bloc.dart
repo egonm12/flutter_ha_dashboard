@@ -39,6 +39,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<_InitializeApp>(_initializeApp);
     on<_ChangeThemeMode>(_changeThemeMode);
     on<_ToggleThemeMode>(_toggleThemeMode);
+    on<_UpdateHomeAssistantUrl>(_updateHomeAssistantUrl);
   }
 
   final SharedPreferencesService _sharedPreferencesService;
@@ -94,6 +95,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       state.copyWith(
         appSettings: state.appSettings.copyWith(
           themeMode: _themeMode,
+        ),
+      ),
+    );
+  }
+
+  void _updateHomeAssistantUrl(
+    _UpdateHomeAssistantUrl event,
+    Emitter<AppState> emit,
+  ) {
+    _sharedPreferencesService.homeAssistantUrl = event.homeAssistantUrl;
+    emit(
+      state.copyWith(
+        appSettings: state.appSettings.copyWith(
+          homeAssistantUrl: event.homeAssistantUrl,
         ),
       ),
     );

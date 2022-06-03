@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:flutter_ha_dashboard/service_locator.dart';
@@ -16,8 +17,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appSettings = context.watch<AppBloc>().state.appSettings;
-    final GoRouter router =
-        AppRouter.router(serviceLocator<AuthenticationRepository>());
+
+    final GoRouter router = AppRouter.router(
+      authenticationRepository: serviceLocator<AuthenticationRepository>(),
+      appBloc: context.watch<AppBloc>(),
+    );
 
     return MaterialApp.router(
       theme: lightTheme,
@@ -26,6 +30,9 @@ class App extends StatelessWidget {
       routeInformationParser: router.routeInformationParser,
       routerDelegate: router.routerDelegate,
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        FormBuilderLocalizations.delegate,
+      ],
     );
   }
 }

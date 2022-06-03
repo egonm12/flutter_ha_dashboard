@@ -135,5 +135,28 @@ void main() {
             .called(1);
       },
     );
+
+    blocTest<AppBloc, AppState>(
+      '''emits [AppSettings(homeAssistantUrl)] when home assistant url is updated
+     and saves it in shared preferences''',
+      setUp: () {
+        when(() => sharedPreferencesService.homeAssistantUrl).thenReturn('');
+      },
+      build: createAppBloc,
+      act: (appBloc) {
+        appBloc.add(const AppEvent.updateHomeAssistantUrl(homeAssistantUrl));
+      },
+      expect: () => [
+        initState.copyWith(
+          appSettings: initState.appSettings.copyWith(
+            homeAssistantUrl: homeAssistantUrl,
+          ),
+        ),
+      ],
+      verify: (_) {
+        verify(() => sharedPreferencesService.homeAssistantUrl =
+            homeAssistantUrl).called(1);
+      },
+    );
   });
 }
