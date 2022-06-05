@@ -34,6 +34,7 @@ class AppSizes extends ThemeExtension<AppSizes> {
   );
 
   @override
+  // ignore: long-parameter-list
   ThemeExtension<AppSizes> copyWith({
     double? p4,
     double? p8,

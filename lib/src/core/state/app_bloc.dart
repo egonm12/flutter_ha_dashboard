@@ -48,7 +48,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   /// Calls [_cleanIfFirstUseAfterUninstall] and emits [AppStatus.initialized]
   /// when done.
   Future<void> _initializeApp(
-    _InitializeApp event,
+    _InitializeApp _,
     Emitter<AppState> emit,
   ) async {
     try {
@@ -82,7 +82,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   void _toggleThemeMode(
-    _ToggleThemeMode event,
+    _ToggleThemeMode _,
     Emitter<AppState> emit,
   ) {
     final _themeMode = state.appSettings.themeMode == ThemeMode.dark

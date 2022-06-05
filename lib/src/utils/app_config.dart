@@ -15,6 +15,12 @@ class AppConfig {
     return _instance;
   }
 
+  /// {@macro AppConfig}
+  AppConfig._internal({
+    required this.oauthClientId,
+    required this.oauthRedirectUri,
+  });
+
   /// Public instance of [AppConfig]
   static AppConfig get instance {
     return _instance;
@@ -28,10 +34,4 @@ class AppConfig {
 
   /// Public instance of [AppConfig]
   static late AppConfig _instance;
-
-  /// {@macro AppConfig}
-  AppConfig._internal({
-    required this.oauthClientId,
-    required this.oauthRedirectUri,
-  });
 }

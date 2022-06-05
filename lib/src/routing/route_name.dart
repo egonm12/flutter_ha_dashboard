@@ -1,6 +1,7 @@
 enum RouteName {
   account('/account'),
-  connect('/connect');
+  connect('/connect'),
+  ;
 
   const RouteName(this.path);
 

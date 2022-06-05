@@ -12,7 +12,7 @@ final ThemeData lightTheme = baseTheme.copyWith(
     backgroundColor: AppColors.light.primaryColor,
   ),
   scaffoldBackgroundColor: AppColors.light.secondaryColor,
-  extensions: <ThemeExtension<dynamic>>[
+  extensions: <ThemeExtension>[
     AppSizes.defaultSizes,
     AppColors.light,
   ],

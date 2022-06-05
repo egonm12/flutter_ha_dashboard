@@ -33,6 +33,15 @@ class AuthenticationRepository {
     return _instance;
   }
 
+  /// {@macro AuthenticationRepository}
+  AuthenticationRepository._internal(
+    this._secureStorageService,
+    this._appAuth,
+    this._appConfig,
+    this._apiService,
+    this._sharedPreferencesService,
+  );
+
   /// Public instance of [AuthenticationRepository]
   static AuthenticationRepository get instance => _instance;
 
@@ -46,15 +55,6 @@ class AuthenticationRepository {
   late final AppConfig _appConfig;
   late final ApiService _apiService;
   late final SharedPreferencesService _sharedPreferencesService;
-
-  /// {@macro AuthenticationRepository}
-  AuthenticationRepository._internal(
-    this._secureStorageService,
-    this._appAuth,
-    this._appConfig,
-    this._apiService,
-    this._sharedPreferencesService,
-  );
 
   Stream<bool> authStateChanges() => _authState.stream;
   bool get isAuthenticated => _authState.value;
@@ -84,6 +84,7 @@ class AuthenticationRepository {
 
     if (response == null) {
       _authState.value = false;
+
       return;
     }
 

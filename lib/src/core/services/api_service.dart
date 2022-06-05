@@ -16,7 +16,7 @@ abstract class ApiService {
   /// https://developers.home-assistant.io/docs/auth_api/#revoking-a-refresh-token
   @POST('/auth/token')
   @Headers(<String, String>{
-    HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded'
+    HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
   })
   Future<void> revokeRefreshToken(@Body() Map<String, String> data);
 }

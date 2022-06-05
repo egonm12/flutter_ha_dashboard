@@ -37,6 +37,7 @@ class AppColors extends ThemeExtension<AppColors> {
   );
 
   @override
+  // ignore: long-parameter-list
   ThemeExtension<AppColors> copyWith({
     Color? primaryColor,
     Color? primaryLightColor,
