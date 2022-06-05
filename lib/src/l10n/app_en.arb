@@ -1,0 +1,8 @@
+{
+  "connect" : "Connect",
+  "@connect": {
+    "description": "Title of the connect page"
+  },
+  "connectCTA": "Connect",
+  "urlTextFieldPlaceholder": "Home Assistant URL"
+}

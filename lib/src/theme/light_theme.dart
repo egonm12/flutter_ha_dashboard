@@ -12,7 +12,7 @@ final ThemeData lightTheme = baseTheme.copyWith(
     backgroundColor: AppColors.light.primaryColor,
   ),
   scaffoldBackgroundColor: AppColors.light.secondaryColor,
-  extensions: <ThemeExtension<dynamic>>[
+  extensions: <ThemeExtension>[
     AppSizes.defaultSizes,
     AppColors.light,
   ],
@@ -20,7 +20,13 @@ final ThemeData lightTheme = baseTheme.copyWith(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: baseTheme.elevatedButtonTheme.style!.copyWith(
       backgroundColor: MaterialStateProperty.resolveWith<Color>(
-        (Set<MaterialState> states) => AppColors.light.primaryColor,
+        (Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) {
+            return AppColors.light.primaryColor.withOpacity(0.4);
+          }
+
+          return AppColors.light.primaryColor;
+        },
       ),
       foregroundColor: MaterialStateProperty.resolveWith<Color>(
         (Set<MaterialState> states) => AppColors.light.secondaryLightColor,

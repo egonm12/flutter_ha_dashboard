@@ -39,6 +39,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<_InitializeApp>(_initializeApp);
     on<_ChangeThemeMode>(_changeThemeMode);
     on<_ToggleThemeMode>(_toggleThemeMode);
+    on<_UpdateHomeAssistantUrl>(_updateHomeAssistantUrl);
   }
 
   final SharedPreferencesService _sharedPreferencesService;
@@ -47,7 +48,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   /// Calls [_cleanIfFirstUseAfterUninstall] and emits [AppStatus.initialized]
   /// when done.
   Future<void> _initializeApp(
-    _InitializeApp event,
+    _InitializeApp _,
     Emitter<AppState> emit,
   ) async {
     try {
@@ -81,7 +82,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   }
 
   void _toggleThemeMode(
-    _ToggleThemeMode event,
+    _ToggleThemeMode _,
     Emitter<AppState> emit,
   ) {
     final _themeMode = state.appSettings.themeMode == ThemeMode.dark
@@ -94,6 +95,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       state.copyWith(
         appSettings: state.appSettings.copyWith(
           themeMode: _themeMode,
+        ),
+      ),
+    );
+  }
+
+  void _updateHomeAssistantUrl(
+    _UpdateHomeAssistantUrl event,
+    Emitter<AppState> emit,
+  ) {
+    _sharedPreferencesService.homeAssistantUrl = event.homeAssistantUrl;
+    emit(
+      state.copyWith(
+        appSettings: state.appSettings.copyWith(
+          homeAssistantUrl: event.homeAssistantUrl,
         ),
       ),
     );

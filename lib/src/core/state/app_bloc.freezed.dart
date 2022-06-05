@@ -21,6 +21,7 @@ mixin _$AppEvent {
     required TResult Function() initializeApp,
     required TResult Function(ThemeMode themeMode) changeThemeMode,
     required TResult Function() toggleThemeMode,
+    required TResult Function(String homeAssistantUrl) updateHomeAssistantUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$AppEvent {
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
     TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$AppEvent {
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
     TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,8 @@ mixin _$AppEvent {
     required TResult Function(_InitializeApp value) initializeApp,
     required TResult Function(_ChangeThemeMode value) changeThemeMode,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_UpdateHomeAssistantUrl value)
+        updateHomeAssistantUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +55,7 @@ mixin _$AppEvent {
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +63,7 @@ mixin _$AppEvent {
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,6 +133,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
     required TResult Function() initializeApp,
     required TResult Function(ThemeMode themeMode) changeThemeMode,
     required TResult Function() toggleThemeMode,
+    required TResult Function(String homeAssistantUrl) updateHomeAssistantUrl,
   }) {
     return initializeApp();
   }
@@ -136,6 +144,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
     TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
   }) {
     return initializeApp?.call();
   }
@@ -146,6 +155,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
     TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
     required TResult orElse(),
   }) {
     if (initializeApp != null) {
@@ -160,6 +170,8 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
     required TResult Function(_InitializeApp value) initializeApp,
     required TResult Function(_ChangeThemeMode value) changeThemeMode,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_UpdateHomeAssistantUrl value)
+        updateHomeAssistantUrl,
   }) {
     return initializeApp(this);
   }
@@ -170,6 +182,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
   }) {
     return initializeApp?.call(this);
   }
@@ -180,6 +193,7 @@ class _$_InitializeApp with DiagnosticableTreeMixin implements _InitializeApp {
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
     required TResult orElse(),
   }) {
     if (initializeApp != null) {
@@ -271,6 +285,7 @@ class _$_ChangeThemeMode
     required TResult Function() initializeApp,
     required TResult Function(ThemeMode themeMode) changeThemeMode,
     required TResult Function() toggleThemeMode,
+    required TResult Function(String homeAssistantUrl) updateHomeAssistantUrl,
   }) {
     return changeThemeMode(themeMode);
   }
@@ -281,6 +296,7 @@ class _$_ChangeThemeMode
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
     TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
   }) {
     return changeThemeMode?.call(themeMode);
   }
@@ -291,6 +307,7 @@ class _$_ChangeThemeMode
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
     TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
     required TResult orElse(),
   }) {
     if (changeThemeMode != null) {
@@ -305,6 +322,8 @@ class _$_ChangeThemeMode
     required TResult Function(_InitializeApp value) initializeApp,
     required TResult Function(_ChangeThemeMode value) changeThemeMode,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_UpdateHomeAssistantUrl value)
+        updateHomeAssistantUrl,
   }) {
     return changeThemeMode(this);
   }
@@ -315,6 +334,7 @@ class _$_ChangeThemeMode
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
   }) {
     return changeThemeMode?.call(this);
   }
@@ -325,6 +345,7 @@ class _$_ChangeThemeMode
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
     required TResult orElse(),
   }) {
     if (changeThemeMode != null) {
@@ -396,6 +417,7 @@ class _$_ToggleThemeMode
     required TResult Function() initializeApp,
     required TResult Function(ThemeMode themeMode) changeThemeMode,
     required TResult Function() toggleThemeMode,
+    required TResult Function(String homeAssistantUrl) updateHomeAssistantUrl,
   }) {
     return toggleThemeMode();
   }
@@ -406,6 +428,7 @@ class _$_ToggleThemeMode
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
     TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
   }) {
     return toggleThemeMode?.call();
   }
@@ -416,6 +439,7 @@ class _$_ToggleThemeMode
     TResult Function()? initializeApp,
     TResult Function(ThemeMode themeMode)? changeThemeMode,
     TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
     required TResult orElse(),
   }) {
     if (toggleThemeMode != null) {
@@ -430,6 +454,8 @@ class _$_ToggleThemeMode
     required TResult Function(_InitializeApp value) initializeApp,
     required TResult Function(_ChangeThemeMode value) changeThemeMode,
     required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_UpdateHomeAssistantUrl value)
+        updateHomeAssistantUrl,
   }) {
     return toggleThemeMode(this);
   }
@@ -440,6 +466,7 @@ class _$_ToggleThemeMode
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
   }) {
     return toggleThemeMode?.call(this);
   }
@@ -450,6 +477,7 @@ class _$_ToggleThemeMode
     TResult Function(_InitializeApp value)? initializeApp,
     TResult Function(_ChangeThemeMode value)? changeThemeMode,
     TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
     required TResult orElse(),
   }) {
     if (toggleThemeMode != null) {
@@ -461,6 +489,167 @@ class _$_ToggleThemeMode
 
 abstract class _ToggleThemeMode implements AppEvent {
   const factory _ToggleThemeMode() = _$_ToggleThemeMode;
+}
+
+/// @nodoc
+abstract class _$$_UpdateHomeAssistantUrlCopyWith<$Res> {
+  factory _$$_UpdateHomeAssistantUrlCopyWith(_$_UpdateHomeAssistantUrl value,
+          $Res Function(_$_UpdateHomeAssistantUrl) then) =
+      __$$_UpdateHomeAssistantUrlCopyWithImpl<$Res>;
+  $Res call({String homeAssistantUrl});
+}
+
+/// @nodoc
+class __$$_UpdateHomeAssistantUrlCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res>
+    implements _$$_UpdateHomeAssistantUrlCopyWith<$Res> {
+  __$$_UpdateHomeAssistantUrlCopyWithImpl(_$_UpdateHomeAssistantUrl _value,
+      $Res Function(_$_UpdateHomeAssistantUrl) _then)
+      : super(_value, (v) => _then(v as _$_UpdateHomeAssistantUrl));
+
+  @override
+  _$_UpdateHomeAssistantUrl get _value =>
+      super._value as _$_UpdateHomeAssistantUrl;
+
+  @override
+  $Res call({
+    Object? homeAssistantUrl = freezed,
+  }) {
+    return _then(_$_UpdateHomeAssistantUrl(
+      homeAssistantUrl == freezed
+          ? _value.homeAssistantUrl
+          : homeAssistantUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UpdateHomeAssistantUrl
+    with DiagnosticableTreeMixin
+    implements _UpdateHomeAssistantUrl {
+  const _$_UpdateHomeAssistantUrl(this.homeAssistantUrl);
+
+  @override
+  final String homeAssistantUrl;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AppEvent.updateHomeAssistantUrl(homeAssistantUrl: $homeAssistantUrl)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppEvent.updateHomeAssistantUrl'))
+      ..add(DiagnosticsProperty('homeAssistantUrl', homeAssistantUrl));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_UpdateHomeAssistantUrl &&
+            const DeepCollectionEquality()
+                .equals(other.homeAssistantUrl, homeAssistantUrl));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(homeAssistantUrl));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_UpdateHomeAssistantUrlCopyWith<_$_UpdateHomeAssistantUrl> get copyWith =>
+      __$$_UpdateHomeAssistantUrlCopyWithImpl<_$_UpdateHomeAssistantUrl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initializeApp,
+    required TResult Function(ThemeMode themeMode) changeThemeMode,
+    required TResult Function() toggleThemeMode,
+    required TResult Function(String homeAssistantUrl) updateHomeAssistantUrl,
+  }) {
+    return updateHomeAssistantUrl(homeAssistantUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initializeApp,
+    TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
+  }) {
+    return updateHomeAssistantUrl?.call(homeAssistantUrl);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initializeApp,
+    TResult Function(ThemeMode themeMode)? changeThemeMode,
+    TResult Function()? toggleThemeMode,
+    TResult Function(String homeAssistantUrl)? updateHomeAssistantUrl,
+    required TResult orElse(),
+  }) {
+    if (updateHomeAssistantUrl != null) {
+      return updateHomeAssistantUrl(homeAssistantUrl);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitializeApp value) initializeApp,
+    required TResult Function(_ChangeThemeMode value) changeThemeMode,
+    required TResult Function(_ToggleThemeMode value) toggleThemeMode,
+    required TResult Function(_UpdateHomeAssistantUrl value)
+        updateHomeAssistantUrl,
+  }) {
+    return updateHomeAssistantUrl(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
+  }) {
+    return updateHomeAssistantUrl?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitializeApp value)? initializeApp,
+    TResult Function(_ChangeThemeMode value)? changeThemeMode,
+    TResult Function(_ToggleThemeMode value)? toggleThemeMode,
+    TResult Function(_UpdateHomeAssistantUrl value)? updateHomeAssistantUrl,
+    required TResult orElse(),
+  }) {
+    if (updateHomeAssistantUrl != null) {
+      return updateHomeAssistantUrl(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateHomeAssistantUrl implements AppEvent {
+  const factory _UpdateHomeAssistantUrl(final String homeAssistantUrl) =
+      _$_UpdateHomeAssistantUrl;
+
+  String get homeAssistantUrl => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$_UpdateHomeAssistantUrlCopyWith<_$_UpdateHomeAssistantUrl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

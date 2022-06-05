@@ -29,8 +29,6 @@ class SharedPreferencesService {
   Future<void> init() async {
     // when testing shared preferences can be replaced by a mock
     _sharedPreferences ??= await SharedPreferences.getInstance();
-
-    homeAssistantUrl = 'https://meijers-hassio.duckdns.org';
   }
 
   static const _homeAssistantUrlKey = 'home_assistant_url';

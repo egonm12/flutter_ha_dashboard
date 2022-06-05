@@ -13,7 +13,7 @@ final ThemeData darkTheme = baseTheme.copyWith(
     foregroundColor: AppColors.brightGray,
   ),
   scaffoldBackgroundColor: AppColors.dark.secondaryColor,
-  extensions: <ThemeExtension<dynamic>>[
+  extensions: <ThemeExtension>[
     AppSizes.defaultSizes,
     AppColors.dark,
   ],

@@ -17,7 +17,7 @@ void main() {
         );
 
     late final AppState initState;
-    const homeAssistantUrl = 'home assistant url';
+    const homeAssistantUrl = 'http://localhost:3000';
     const themeMode = ThemeMode.light;
 
     setUpAll(() {
@@ -46,8 +46,10 @@ void main() {
     });
 
     blocTest<AppBloc, AppState>(
-      '''emits [AppStatus.initialized] when app initializes and deletes everything 
-      in secure storage when app runs the first time''',
+      'Given the app runs for the first time'
+      'When the app is initialized'
+      'Then it emits [AppStatus.initialized()]'
+      'And deletes all keys with associated values from secure storage',
       setUp: () {
         when(() => sharedPreferencesService.firstRun).thenReturn(true);
         when(secureStorageService.deleteAll).thenAnswer((_) => Future.value());
@@ -65,8 +67,9 @@ void main() {
     );
 
     blocTest<AppBloc, AppState>(
-      '''emits [AppStatus.initialized] when app initializes and does not delete
-      anything in secure storage when app does not run the first time''',
+      'Given the app does not run for the first time'
+      'When the app is initialized'
+      'Then it emits [AppStatus.initialized()]',
       setUp: () {
         when(() => sharedPreferencesService.firstRun).thenReturn(false);
         when(secureStorageService.deleteAll).thenAnswer((_) => Future.value());
@@ -84,8 +87,9 @@ void main() {
     );
 
     blocTest<AppBloc, AppState>(
-      '''emits [AppSettings(themeMode: ThemeMode.dark)] when theme is changed to
-      ThemeMode.dark and saves it in shared preferences''',
+      'When the theme mode is changed to [ThemeMode.dark]'
+      'Then it emits [AppSettings(themeMode. ThemeMode.dark)]'
+      'And it updates the theme mode in shared preferences to [ThemeMode.dark]',
       build: createAppBloc,
       act: (appBloc) => appBloc.add(
         const AppEvent.changeThemeMode(ThemeMode.dark),
@@ -104,8 +108,12 @@ void main() {
     );
 
     blocTest<AppBloc, AppState>(
-      '''emits [AppSettings(themeMode: ThemeMode.dark)] when theme is toggled from
-      ThemeMode.light and saves it in shared preferences''',
+      'Given the theme mode is [ThemeMode.light]'
+      'When the theme mode is toggled twice'
+      'Then it emits [AppSettings(themeMode. ThemeMode.dark)]'
+      'And it updates the theme mode in shared preferences to [ThemeMode.dark]'
+      'And it emits [AppSettings(themeMode. ThemeMode.light)]'
+      'And it updates the theme mode in shared preferences to [ThemeMode.light]',
       setUp: () {
         when(() => sharedPreferencesService.themeMode).thenReturn(
           ThemeMode.light,
@@ -133,6 +141,31 @@ void main() {
             .called(1);
         verify(() => sharedPreferencesService.themeMode = ThemeMode.light)
             .called(1);
+      },
+    );
+
+    blocTest<AppBloc, AppState>(
+      'Given the home assistant url is not set'
+      'When the home assistant url gets changed to $homeAssistantUrl'
+      'Then it emits [AppSettings(homeAssistantUrl: $homeAssistantUrl)]'
+      'And it updates the home assistant url in shared preferences',
+      setUp: () {
+        when(() => sharedPreferencesService.homeAssistantUrl).thenReturn('');
+      },
+      build: createAppBloc,
+      act: (appBloc) {
+        appBloc.add(const AppEvent.updateHomeAssistantUrl(homeAssistantUrl));
+      },
+      expect: () => [
+        initState.copyWith(
+          appSettings: initState.appSettings.copyWith(
+            homeAssistantUrl: homeAssistantUrl,
+          ),
+        ),
+      ],
+      verify: (_) {
+        verify(() => sharedPreferencesService.homeAssistantUrl =
+            homeAssistantUrl).called(1);
       },
     );
   });

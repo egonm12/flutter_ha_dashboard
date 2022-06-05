@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
                 const AppEvent.toggleThemeMode(),
               ),
           icon: const Icon(Icons.brightness_4_sharp),
-        )
+        ),
       ],
     );
   }

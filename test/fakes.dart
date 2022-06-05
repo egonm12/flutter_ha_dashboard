@@ -7,6 +7,9 @@ class FakeAuthorizationTokenRequest extends Fake
 
 class FakeTokenRequest extends Fake implements TokenRequest {}
 
+class FakeAuthorizationServiceConfiguration extends Fake
+    implements AuthorizationServiceConfiguration {}
+
 class FakeResponse<T> extends Fake implements Response<T> {}
 
-class MockRequestOptions extends Fake implements RequestOptions {}
+class FakeRequestOptions extends Fake implements RequestOptions {}

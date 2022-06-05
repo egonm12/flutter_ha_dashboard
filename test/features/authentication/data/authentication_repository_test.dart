@@ -4,20 +4,18 @@ import 'package:flutter_appauth/flutter_appauth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
-import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
-import 'package:flutter_ha_dashboard/src/utils/app_config.dart';
 import '../../../fakes.dart';
 import '../../../mocks/mocks.dart';
 
 void main() {
   group('AuthenticationRepository', () {
     late final AuthenticationRepository authenticationRepository;
-    late final SecureStorageService secureStorageService;
-    late final FlutterAppAuth appAuth;
-    late final AppConfig appConfig;
-    late final ApiService apiService;
+    late final MockSecureStorageService secureStorageService;
+    late final MockFlutterAppAuth appAuth;
+    late final MockAppConfig appConfig;
+    late final MockApiService apiService;
+    late final MockSharedPreferencesService sharedPreferencesService;
 
     const accessToken = 'access token';
     final accessTokenExpirationDate = DateTime.now().add(
@@ -30,18 +28,23 @@ void main() {
       appAuth = MockFlutterAppAuth();
       appConfig = MockAppConfig();
       apiService = MockApiService();
+      sharedPreferencesService = MockSharedPreferencesService();
 
       authenticationRepository = AuthenticationRepository(
         secureStorageService: secureStorageService,
         appAuth: appAuth,
         appConfig: appConfig,
         apiService: apiService,
+        sharedPreferencesService: sharedPreferencesService,
       );
 
       registerFallbackValue(FakeAuthorizationTokenRequest());
+      registerFallbackValue(FakeAuthorizationServiceConfiguration());
 
       when(() => appConfig.oauthRedirectUri).thenReturn('redirect_uri');
       when(() => appConfig.oauthClientId).thenReturn('client_id');
+      when(() => sharedPreferencesService.homeAssistantUrl)
+          .thenReturn('home assistant url');
     });
 
     setUp(() {
@@ -97,6 +100,37 @@ void main() {
 
         expect(authenticationRepository.isAuthenticated, true);
         expect(authenticationRepository.authStateChanges(), emits(true));
+
+        final verificationResult = verify(
+          () => appAuth.authorizeAndExchangeCode(
+            captureAny(),
+          ),
+        )..called(1);
+
+        final AuthorizationTokenRequest authorizationTokenRequest =
+            verificationResult.captured.first as AuthorizationTokenRequest;
+
+        expect(
+          authorizationTokenRequest.clientId,
+          appConfig.oauthClientId,
+        );
+        expect(
+          authorizationTokenRequest.redirectUrl,
+          appConfig.oauthRedirectUri,
+        );
+        expect(
+          authorizationTokenRequest.issuer,
+          '${sharedPreferencesService.homeAssistantUrl}/auth/authorize',
+        );
+
+        expect(
+          authorizationTokenRequest.serviceConfiguration?.authorizationEndpoint,
+          '${sharedPreferencesService.homeAssistantUrl}/auth/authorize',
+        );
+        expect(
+          authorizationTokenRequest.serviceConfiguration?.tokenEndpoint,
+          '${sharedPreferencesService.homeAssistantUrl}/auth/token',
+        );
       });
 
       test('''
@@ -122,6 +156,8 @@ void main() {
 
         expect(authenticationRepository.isAuthenticated, false);
         expect(authenticationRepository.authStateChanges(), emits(false));
+
+        verify(() => appAuth.authorizeAndExchangeCode(any())).called(1);
       });
 
       test(
@@ -239,6 +275,41 @@ void main() {
             () => secureStorageService
                 .writeAccessTokenExpirationDate(accessTokenExpirationDate),
           ).called(1);
+
+          final verificationResult = verify(
+            () => appAuth.token(
+              captureAny(),
+            ),
+          )..called(1);
+
+          final TokenRequest tokenRequest =
+              verificationResult.captured.first as TokenRequest;
+
+          expect(
+            tokenRequest.clientId,
+            appConfig.oauthClientId,
+          );
+          expect(
+            tokenRequest.redirectUrl,
+            appConfig.oauthRedirectUri,
+          );
+          expect(
+            tokenRequest.refreshToken,
+            refreshToken,
+          );
+          expect(
+            tokenRequest.issuer,
+            '${sharedPreferencesService.homeAssistantUrl}/auth/authorize',
+          );
+
+          expect(
+            tokenRequest.serviceConfiguration?.authorizationEndpoint,
+            '${sharedPreferencesService.homeAssistantUrl}/auth/authorize',
+          );
+          expect(
+            tokenRequest.serviceConfiguration?.tokenEndpoint,
+            '${sharedPreferencesService.homeAssistantUrl}/auth/token',
+          );
         });
       });
 
@@ -292,6 +363,8 @@ void main() {
             () => secureStorageService
                 .writeAccessTokenExpirationDate(accessTokenExpirationDate),
           ).called(1);
+
+          verify(() => appAuth.token(any())).called(1);
         });
 
         test('returns null when request is successful but response is null',

@@ -8,6 +8,7 @@ import 'package:rxdart/rxdart.dart';
 import 'package:flutter_ha_dashboard/service_locator.dart';
 import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
+import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
 import 'package:flutter_ha_dashboard/src/utils/app_config.dart';
 
 class AuthenticationRepository {
@@ -17,6 +18,7 @@ class AuthenticationRepository {
     FlutterAppAuth? appAuth,
     AppConfig? appConfig,
     ApiService? apiService,
+    SharedPreferencesService? sharedPreferencesService,
   }) {
     _authState = BehaviorSubject<bool>.seeded(false);
 
@@ -25,10 +27,20 @@ class AuthenticationRepository {
       appAuth ?? FlutterAppAuth(),
       appConfig ?? serviceLocator<AppConfig>(),
       apiService ?? serviceLocator<ApiService>(),
+      sharedPreferencesService ?? serviceLocator<SharedPreferencesService>(),
     );
 
     return _instance;
   }
+
+  /// {@macro AuthenticationRepository}
+  AuthenticationRepository._internal(
+    this._secureStorageService,
+    this._appAuth,
+    this._appConfig,
+    this._apiService,
+    this._sharedPreferencesService,
+  );
 
   /// Public instance of [AuthenticationRepository]
   static AuthenticationRepository get instance => _instance;
@@ -42,14 +54,7 @@ class AuthenticationRepository {
   late final FlutterAppAuth _appAuth;
   late final AppConfig _appConfig;
   late final ApiService _apiService;
-
-  /// {@macro AuthenticationRepository}
-  AuthenticationRepository._internal(
-    this._secureStorageService,
-    this._appAuth,
-    this._appConfig,
-    this._apiService,
-  );
+  late final SharedPreferencesService _sharedPreferencesService;
 
   Stream<bool> authStateChanges() => _authState.stream;
   bool get isAuthenticated => _authState.value;
@@ -62,22 +67,24 @@ class AuthenticationRepository {
   ///
   /// https://developers.home-assistant.io/docs/auth_api/#authorize
   Future<void> authenticate() async {
+    final homeAssistantUrl = _sharedPreferencesService.homeAssistantUrl;
+
     final AuthorizationTokenResponse? response =
         await _appAuth.authorizeAndExchangeCode(
       AuthorizationTokenRequest(
         _appConfig.oauthClientId,
         _appConfig.oauthRedirectUri,
-        issuer: 'https://meijers-hassio.duckdns.org/auth/authorize',
-        serviceConfiguration: const AuthorizationServiceConfiguration(
-          tokenEndpoint: 'https://meijers-hassio.duckdns.org/auth/token',
-          authorizationEndpoint:
-              'https://meijers-hassio.duckdns.org/auth/authorize',
+        issuer: '$homeAssistantUrl/auth/authorize',
+        serviceConfiguration: AuthorizationServiceConfiguration(
+          tokenEndpoint: '$homeAssistantUrl/auth/token',
+          authorizationEndpoint: '$homeAssistantUrl/auth/authorize',
         ),
       ),
     );
 
     if (response == null) {
       _authState.value = false;
+
       return;
     }
 
@@ -136,6 +143,7 @@ class AuthenticationRepository {
   /// store new tokens. Returns an access token.
   Future<String?> _refreshAccessToken() async {
     final String? refreshToken = await _secureStorageService.readRefreshToken();
+    final String homeAssistantUrl = _sharedPreferencesService.homeAssistantUrl;
 
     if (refreshToken == null) return null;
 
@@ -144,11 +152,10 @@ class AuthenticationRepository {
         _appConfig.oauthClientId,
         _appConfig.oauthRedirectUri,
         refreshToken: refreshToken,
-        issuer: 'https://meijers-hassio.duckdns.org/auth/authorize',
-        serviceConfiguration: const AuthorizationServiceConfiguration(
-          tokenEndpoint: 'https://meijers-hassio.duckdns.org/auth/token',
-          authorizationEndpoint:
-              'https://meijers-hassio.duckdns.org/auth/authorize',
+        issuer: '$homeAssistantUrl/auth/authorize',
+        serviceConfiguration: AuthorizationServiceConfiguration(
+          tokenEndpoint: '$homeAssistantUrl/auth/token',
+          authorizationEndpoint: '$homeAssistantUrl/auth/authorize',
         ),
       ),
     );
