@@ -30,7 +30,9 @@ void main() {
 
     group('signIn', () {
       blocTest<ConnectCubit, ConnectState>(
-        'emits [ConnectState.loading(), ConnectState.data(null)] when request returned with data',
+        'Given the user is signing in'
+        'When the request to authenticate returns with a success response'
+        'Then it emits [ConnectState.loading(), ConnectState.data(null)]',
         setUp: () =>
             when(() => authenticationRepository.authenticate()).thenAnswer(
           (_) => Future.value(),
@@ -45,7 +47,9 @@ void main() {
       );
 
       blocTest<ConnectCubit, ConnectState>(
-        'emits [ConnectState.loading(), ConnectState.error(null)] when request returned with data',
+        'Given the user is signing in'
+        'When the request to authenticate returns with an error response'
+        'Then it emits [ConnectState.loading(), ConnectState.error(error)]',
         setUp: () =>
             when(() => authenticationRepository.authenticate()).thenThrow(
           'Something went wrong',
