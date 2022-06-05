@@ -31,7 +31,10 @@ void main() {
       const url = 'http://localhost:3000';
       await _renderUrlTextField(tester);
 
-      final urlTextField = find.byType(FormBuilderTextField);
+      final urlTextField = find.widgetWithText(
+        FormBuilderTextField,
+        'urlTextFieldPlaceholder',
+      );
 
       await tester.enterText(urlTextField, url);
 

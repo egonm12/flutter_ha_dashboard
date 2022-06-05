@@ -64,7 +64,7 @@ void main() {
       await tester.tap(
         find.widgetWithText(
           ElevatedButton,
-          'Connect',
+          'connectCTA',
         ),
       );
 
@@ -89,7 +89,7 @@ void main() {
       await tester.tap(
         find.widgetWithText(
           ElevatedButton,
-          'Connect',
+          'connectCTA',
         ),
       );
 

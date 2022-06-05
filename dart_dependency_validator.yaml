@@ -3,3 +3,4 @@ ignore:
   - lints
   - cupertino_icons
   - logger
+  - flutter_gen
