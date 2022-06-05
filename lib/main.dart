@@ -13,7 +13,6 @@ Future<void> main() async {
   setUp();
 
   await serviceLocator<SharedPreferencesService>().init();
-  serviceLocator<SharedPreferencesService>().homeAssistantUrl = '';
 
   runApp(
     BlocProvider(
