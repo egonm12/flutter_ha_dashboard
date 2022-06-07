@@ -22,12 +22,14 @@ class ConnectCubit extends Cubit<ConnectState> {
   /// - [AsyncValue.loading] when the request is in progress.
   /// - [AsyncValue.data] when the request returned with data.
   /// - [AsyncValue.error] when the request returned with an error.
-  Future<void> signIn() async {
+  Future<void> signIn(String homeAssistantUrl) async {
     emit(const ConnectState.loading());
 
     emit(
       await ConnectState.guard(
-        () async => await authenticationRepository.authenticate(),
+        () async => await authenticationRepository.authenticate(
+          homeAssistantUrl,
+        ),
       ),
     );
   }

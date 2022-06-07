@@ -46,8 +46,8 @@ void main() {
     });
 
     blocTest<AppBloc, AppState>(
-      'Given the app runs for the first time'
-      'When the app is initialized'
+      'Given the app is initialized'
+      'When the app runs for the first time'
       'Then it emits [AppStatus.initialized()]'
       'And deletes all keys with associated values from secure storage',
       setUp: () {

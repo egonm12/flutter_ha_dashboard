@@ -22,6 +22,7 @@ void main() {
       const Duration(hours: 1),
     );
     const refreshToken = 'refresh token';
+    const homeAssistantUrl = 'http://localhost:3000';
 
     setUpAll(() {
       secureStorageService = MockSecureStorageService();
@@ -43,8 +44,9 @@ void main() {
 
       when(() => appConfig.oauthRedirectUri).thenReturn('redirect_uri');
       when(() => appConfig.oauthClientId).thenReturn('client_id');
-      when(() => sharedPreferencesService.homeAssistantUrl)
-          .thenReturn('home assistant url');
+      when(() => sharedPreferencesService.homeAssistantUrl).thenReturn(
+        homeAssistantUrl,
+      );
     });
 
     setUp(() {
@@ -83,7 +85,7 @@ void main() {
           (_) => Future.value(authorizationTokenResponse),
         );
 
-        await authenticationRepository.authenticate();
+        await authenticationRepository.authenticate(homeAssistantUrl);
 
         verify(
           () => secureStorageService.writeAccessToken(accessToken),
@@ -140,7 +142,7 @@ void main() {
           (_) => Future.value(null),
         );
 
-        await authenticationRepository.authenticate();
+        await authenticationRepository.authenticate(homeAssistantUrl);
 
         verifyNever(
           () => secureStorageService.writeAccessToken(any()),
@@ -168,7 +170,8 @@ void main() {
         when(() => appAuth.authorizeAndExchangeCode(any())).thenThrow(error);
 
         expect(
-          () async => await authenticationRepository.authenticate(),
+          () async =>
+              await authenticationRepository.authenticate(homeAssistantUrl),
           throwsA(isA<PlatformException>()),
         );
 

@@ -16,6 +16,7 @@ void main() {
 
     late final MockFormBuilderKey formKey;
     late final String homeAssistantUrl;
+    late final TextEditingController controller;
 
     late final MockAppBloc appBloc;
     late final MockConnectCubit connectCubit;
@@ -27,6 +28,10 @@ void main() {
       formBuilderState = MockFormBuilderState();
       formKey = MockFormBuilderKey(formBuilderState);
       homeAssistantUrl = 'http://localhost:3000';
+
+      controller = TextEditingController(
+        text: homeAssistantUrl,
+      );
 
       appBloc = MockAppBloc();
       connectCubit = MockConnectCubit();
@@ -40,14 +45,14 @@ void main() {
       ];
 
       when(() => appBloc.add(any())).thenReturn(null);
-      when(connectCubit.signIn).thenAnswer((_) => Future.value());
+      when(() => connectCubit.signIn(any())).thenAnswer((_) => Future.value());
     });
 
     Future<void> _renderConnectButton(WidgetTester tester) async =>
         await tester.pumpRouterApp(
           ConnectButton(
             formKey: formKey,
-            homeAssistantUrl: homeAssistantUrl,
+            controller: controller,
           ),
           blocProviders: blocProviders,
         );
@@ -73,7 +78,7 @@ void main() {
           AppEvent.updateHomeAssistantUrl(homeAssistantUrl),
         ),
       ).called(1);
-      verify(connectCubit.signIn).called(1);
+      verify(() => connectCubit.signIn(homeAssistantUrl)).called(1);
       verifyNever(() => formBuilderState.validate());
     });
 
@@ -95,7 +100,7 @@ void main() {
 
       verify(() => formBuilderState.validate()).called(1);
       verifyNever(() => appBloc.add(any()));
-      verifyNever(connectCubit.signIn);
+      verifyNever(() => connectCubit.signIn(any()));
     });
   });
 }

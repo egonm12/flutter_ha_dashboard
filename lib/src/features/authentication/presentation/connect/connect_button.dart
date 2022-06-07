@@ -12,22 +12,22 @@ import 'package:flutter_ha_dashboard/src/utils/build_context_extensions.dart';
 class ConnectButton extends StatelessWidget {
   const ConnectButton({
     required this.formKey,
-    required this.homeAssistantUrl,
+    required this.controller,
     super.key,
   });
 
   final GlobalKey<FormBuilderState> formKey;
-  final String homeAssistantUrl;
+  final TextEditingController controller;
 
   Future<void> _onSubmit(BuildContext context) async {
     if (formKey.currentState!.isValid) {
       context.read<AppBloc>().add(
             AppEvent.updateHomeAssistantUrl(
-              homeAssistantUrl,
+              controller.text,
             ),
           );
 
-      await context.read<ConnectCubit>().signIn();
+      await context.read<ConnectCubit>().signIn(controller.text);
     } else {
       formKey.currentState!.validate();
     }
@@ -36,7 +36,7 @@ class ConnectButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => _onSubmit(context),
+      onPressed: () async => await _onSubmit(context),
       child: Text(
         context.translations.connectCTA,
       ),
