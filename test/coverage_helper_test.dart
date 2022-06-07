@@ -16,9 +16,21 @@ import 'package:flutter_ha_dashboard/src/core/state/app_bloc.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/account/account_cubit.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/account/account_screen.dart';
+import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_button.dart';
+import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_cubit.dart';
+import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_form.dart';
+import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_screen.dart';
+import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/url_text_field.dart';
 import 'package:flutter_ha_dashboard/src/routing/route_name.dart';
 import 'package:flutter_ha_dashboard/src/routing/router.dart';
+import 'package:flutter_ha_dashboard/src/theme/base_theme.dart';
+import 'package:flutter_ha_dashboard/src/theme/dark_theme.dart';
+import 'package:flutter_ha_dashboard/src/theme/light_theme.dart';
+import 'package:flutter_ha_dashboard/src/theme/theme_extensions/app_colors.dart';
+import 'package:flutter_ha_dashboard/src/theme/theme_extensions/app_sizes.dart';
 import 'package:flutter_ha_dashboard/src/utils/app_config.dart';
+import 'package:flutter_ha_dashboard/src/utils/build_context_extensions.dart';
+import 'package:flutter_ha_dashboard/src/widgets/app_bar/custom_app_bar.dart';
 import 'package:flutter_ha_dashboard/src/widgets/async_value/async_value_widget.dart';
 
 void main() {}

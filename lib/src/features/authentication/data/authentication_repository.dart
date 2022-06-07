@@ -66,9 +66,7 @@ class AuthenticationRepository {
   /// and access token expiration date on success.
   ///
   /// https://developers.home-assistant.io/docs/auth_api/#authorize
-  Future<void> authenticate() async {
-    final homeAssistantUrl = _sharedPreferencesService.homeAssistantUrl;
-
+  Future<void> authenticate(String homeAssistantUrl) async {
     final AuthorizationTokenResponse? response =
         await _appAuth.authorizeAndExchangeCode(
       AuthorizationTokenRequest(

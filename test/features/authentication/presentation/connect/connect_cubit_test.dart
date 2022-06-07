@@ -10,6 +10,7 @@ void main() {
   group(ConnectCubit, () {
     late final MockAuthenticationRepository authenticationRepository;
     late final ConnectState initialState;
+    late final String homeAssistantUrl;
 
     ConnectCubit createConnectCubit() => ConnectCubit(
           authenticationRepository: authenticationRepository,
@@ -19,6 +20,8 @@ void main() {
       authenticationRepository = MockAuthenticationRepository();
 
       initialState = createConnectCubit().state;
+
+      homeAssistantUrl = 'http://localhost:3000';
     });
 
     test('returns the correct initial state', () {
@@ -33,29 +36,36 @@ void main() {
         'Given the user is signing in'
         'When the request to authenticate returns with a success response'
         'Then it emits [ConnectState.loading(), ConnectState.data(null)]',
-        setUp: () =>
-            when(() => authenticationRepository.authenticate()).thenAnswer(
+        setUp: () => when(() => authenticationRepository.authenticate(
+              any(),
+            )).thenAnswer(
           (_) => Future.value(),
         ),
         build: createConnectCubit,
-        act: (connectCubit) async => await connectCubit.signIn(),
+        act: (connectCubit) async =>
+            await connectCubit.signIn(homeAssistantUrl),
         expect: () => const [
           ConnectState.loading(),
           ConnectState.data(null),
         ],
-        verify: (_) => verify(authenticationRepository.authenticate).called(1),
+        verify: (_) => verify(
+          () => authenticationRepository.authenticate(homeAssistantUrl),
+        ).called(1),
       );
 
       blocTest<ConnectCubit, ConnectState>(
         'Given the user is signing in'
         'When the request to authenticate returns with an error response'
         'Then it emits [ConnectState.loading(), ConnectState.error(error)]',
-        setUp: () =>
-            when(() => authenticationRepository.authenticate()).thenThrow(
+        setUp: () => when(
+          () => authenticationRepository.authenticate(
+            any(),
+          ),
+        ).thenThrow(
           'Something went wrong',
         ),
         build: createConnectCubit,
-        act: (connectCubit) async => connectCubit.signIn(),
+        act: (connectCubit) async => connectCubit.signIn(homeAssistantUrl),
         expect: () => [
           const ConnectState.loading(),
           predicate<AsyncValue<void>>((value) {
@@ -64,7 +74,9 @@ void main() {
           }),
         ],
         verify: (connectCubit) {
-          verify(authenticationRepository.authenticate).called(1);
+          verify(
+            () => authenticationRepository.authenticate(homeAssistantUrl),
+          ).called(1);
         },
       );
     });

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import 'package:flutter_ha_dashboard/src/core/state/app_bloc.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_button.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_cubit.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/url_text_field.dart';
@@ -21,7 +22,9 @@ class ConnectForm extends HookWidget {
     final _appSizes = Theme.of(context).extension<AppSizes>()!;
 
     final _formKey = useMemoized(GlobalKey<FormBuilderState>.new, const []);
-    final _controller = useTextEditingController();
+    final _controller = useTextEditingController(
+      text: context.watch<AppBloc>().state.appSettings.homeAssistantUrl,
+    );
 
     return AsyncValueWidget(
       value: context.watch<ConnectCubit>().state,
@@ -37,7 +40,7 @@ class ConnectForm extends HookWidget {
             ),
             ConnectButton(
               formKey: _formKey,
-              homeAssistantUrl: _controller.text,
+              controller: _controller,
             ),
           ],
         ),
