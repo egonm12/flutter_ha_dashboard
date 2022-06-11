@@ -24,11 +24,9 @@ void main() {
         (_) => Future.value(true),
       );
 
-      await SharedPreferencesService(
+      sharedPreferencesService = await SharedPreferencesService.create(
         sharedPreferences: sharedPreferences,
-      ).init();
-
-      sharedPreferencesService = SharedPreferencesService.instance;
+      );
     });
 
     group('Given the init callback', () {
