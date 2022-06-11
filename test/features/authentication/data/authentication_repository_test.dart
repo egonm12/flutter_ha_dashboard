@@ -65,6 +65,74 @@ void main() {
       );
     });
 
+    group('Given the init callback', () {
+      test(
+          'When the access token is null'
+          'Then the auth state stream returns false', () async {
+        when(() => secureStorageService.readAccessTokenExpirationDate())
+            .thenAnswer(
+          (_) => Future.value(
+            DateTime.now().add(const Duration(hours: 1)),
+          ),
+        );
+        when(() => secureStorageService.readAccessToken()).thenAnswer(
+          (_) => Future.value(null),
+        );
+
+        await authenticationRepository.init();
+
+        await expectLater(
+          authenticationRepository.authStateStream,
+          emits(false),
+        );
+        verify(secureStorageService.readAccessToken).called(1);
+      });
+
+      test(
+          'When the access token is an empty string'
+          'Then the auth state stream returns false', () async {
+        when(() => secureStorageService.readAccessTokenExpirationDate())
+            .thenAnswer(
+          (_) => Future.value(
+            DateTime.now().add(const Duration(hours: 1)),
+          ),
+        );
+        when(secureStorageService.readAccessToken).thenAnswer(
+          (_) => Future.value(''),
+        );
+
+        await authenticationRepository.init();
+
+        await expectLater(
+          authenticationRepository.authStateStream,
+          emits(false),
+        );
+        verify(secureStorageService.readAccessToken).called(1);
+      });
+
+      test(
+          'When the access token is a string that is not empty'
+          'Then the auth state stream returns true', () async {
+        when(() => secureStorageService.readAccessTokenExpirationDate())
+            .thenAnswer(
+          (_) => Future.value(
+            DateTime.now().add(const Duration(hours: 1)),
+          ),
+        );
+        when(secureStorageService.readAccessToken).thenAnswer(
+          (_) => Future.value('token'),
+        );
+
+        await authenticationRepository.init();
+
+        await expectLater(
+          authenticationRepository.authStateStream,
+          emits(true),
+        );
+        verify(secureStorageService.readAccessToken).called(1);
+      });
+    });
+
     group('authenticate', () {
       final AuthorizationTokenResponse authorizationTokenResponse =
           AuthorizationTokenResponse(
@@ -101,7 +169,7 @@ void main() {
         ).called(1);
 
         expect(authenticationRepository.isAuthenticated, true);
-        expect(authenticationRepository.authStateChanges(), emits(true));
+        expect(authenticationRepository.authStateStream, emits(true));
 
         final verificationResult = verify(
           () => appAuth.authorizeAndExchangeCode(
@@ -157,7 +225,7 @@ void main() {
         );
 
         expect(authenticationRepository.isAuthenticated, false);
-        expect(authenticationRepository.authStateChanges(), emits(false));
+        expect(authenticationRepository.authStateStream, emits(false));
 
         verify(() => appAuth.authorizeAndExchangeCode(any())).called(1);
       });
@@ -188,7 +256,7 @@ void main() {
         );
 
         expect(authenticationRepository.isAuthenticated, false);
-        expect(authenticationRepository.authStateChanges(), emits(false));
+        expect(authenticationRepository.authStateStream, emits(false));
       });
     });
 
@@ -214,7 +282,7 @@ void main() {
           verify(secureStorageService.deleteAll).called(1);
 
           expect(authenticationRepository.isAuthenticated, false);
-          expect(authenticationRepository.authStateChanges(), emits(false));
+          expect(authenticationRepository.authStateStream, emits(false));
         });
       });
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// {@template SharedPreferencesService}
@@ -26,14 +27,23 @@ class SharedPreferencesService {
   late SharedPreferences? _sharedPreferences;
 
   /// Creates an instance of [SharedPreferences] and assigns it to [_sharedPreferences]
+  /// and assigns the [homeAssistantUrl] to [_homeAssistantUrlSubject].
   Future<void> init() async {
     // when testing shared preferences can be replaced by a mock
     _sharedPreferences ??= await SharedPreferences.getInstance();
+    _homeAssistantUrlSubject.value = homeAssistantUrl;
   }
 
   static const _homeAssistantUrlKey = 'home_assistant_url';
   static const _firstRunKey = 'first_run';
   static const _themeModeKey = 'theme_mode';
+
+  final BehaviorSubject<String> _homeAssistantUrlSubject =
+      BehaviorSubject<String>();
+  Stream<String> get homeAssistantUrlStream => _homeAssistantUrlSubject.stream;
+
+  /// Close streams and listeners
+  Future<void> dispose() async => _homeAssistantUrlSubject.close();
 
   /// Returns the home assistant url.
   ///
@@ -42,8 +52,10 @@ class SharedPreferencesService {
       _sharedPreferences!.getString(_homeAssistantUrlKey) ?? '';
 
   /// Sets the home assistant url.
-  set homeAssistantUrl(String value) =>
-      _sharedPreferences!.setString(_homeAssistantUrlKey, value);
+  set homeAssistantUrl(String value) {
+    _sharedPreferences!.setString(_homeAssistantUrlKey, value);
+    _homeAssistantUrlSubject.value = value;
+  }
 
   /// Returns a bool depending on if the app is running for the first time.
   ///

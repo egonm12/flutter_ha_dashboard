@@ -1,20 +1,38 @@
+import 'dart:async';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
+import 'package:flutter_ha_dashboard/service_locator.dart';
+import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
 
 /// {@template SecureStorageService}
 /// Service class used as a bridge to communicate with [FlutterSecureStorage].
 /// {@endtemplate}
 class SecureStorageService {
   /// {@macro SecureStorageService}
-  factory SecureStorageService({FlutterSecureStorage? flutterSecureStorage}) {
+  factory SecureStorageService({
+    FlutterSecureStorage? flutterSecureStorage,
+    SharedPreferencesService? sharedPreferencesService,
+  }) {
     _instance = SecureStorageService._internal(
       flutterSecureStorage ?? const FlutterSecureStorage(),
+      sharedPreferencesService ?? serviceLocator<SharedPreferencesService>(),
     );
 
     return _instance;
   }
 
   /// {@macro SecureStorageService}
-  SecureStorageService._internal(this._flutterSecureStorage);
+  SecureStorageService._internal(
+    this._flutterSecureStorage,
+    this._sharedPreferencesService,
+  ) {
+    _homeAssistantUrlSubscription = _sharedPreferencesService
+        .homeAssistantUrlStream
+        .listen((homeAssistantUrl) async {
+      if (homeAssistantUrl.isEmpty) await deleteAll();
+    });
+  }
 
   /// Public instance of [SecureStorageService]
   static SecureStorageService get instance => _instance;
@@ -27,7 +45,12 @@ class SecureStorageService {
   /// Private instance of [SecureStorageService]
   static late SecureStorageService _instance;
 
-  late final FlutterSecureStorage _flutterSecureStorage;
+  final FlutterSecureStorage _flutterSecureStorage;
+  final SharedPreferencesService _sharedPreferencesService;
+
+  late final StreamSubscription<String> _homeAssistantUrlSubscription;
+
+  Future<void> dispose() async => _homeAssistantUrlSubscription.cancel();
 
   /// Retrieves the value of [accessTokenKey] stored in [FlutterSecureStorage]
   Future<String?> readAccessToken() async =>

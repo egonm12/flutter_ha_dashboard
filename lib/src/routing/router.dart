@@ -24,7 +24,7 @@ class AppRouter {
         appBloc: appBloc,
       ),
       refreshListenable: Listenable.merge([
-        GoRouterRefreshStream(authenticationRepository.authStateChanges()),
+        GoRouterRefreshStream(authenticationRepository.authStateStream),
         GoRouterRefreshStream(appBloc.stream),
       ]),
     );

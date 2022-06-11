@@ -31,6 +31,16 @@ void main() {
       sharedPreferencesService = SharedPreferencesService.instance;
     });
 
+    group('Given the init callback', () {
+      test('Then it returns the home assistant url to the stream value',
+          () async {
+        await expectLater(
+          sharedPreferencesService.homeAssistantUrlStream,
+          emits(''),
+        );
+      });
+    });
+
     group('homeAssistantUrl', () {
       const homeAssistantUrl = 'foo bar';
 
@@ -41,8 +51,10 @@ void main() {
       });
 
       test(
-          'calls SharedPreferences.setString with the correct key and value when calling setter',
-          () {
+          'Given the home assistant url'
+          'When a new value is set'
+          'Then it saves the the value to shared preferences'
+          'And it updates home assistant url stream', () async {
         sharedPreferencesService.homeAssistantUrl = homeAssistantUrl;
 
         verify(
@@ -50,6 +62,11 @@ void main() {
             sharedPreferencesService.homeAssistantUrlKey,
             homeAssistantUrl,
           ),
+        );
+
+        await expectLater(
+          sharedPreferencesService.homeAssistantUrlStream,
+          emits(homeAssistantUrl),
         );
       });
 

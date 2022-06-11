@@ -1,4 +1,3 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -8,13 +7,71 @@ import '../../mocks/mocks.dart';
 void main() {
   group('SecureStorageService', () {
     late final SecureStorageService secureStorageService;
-    late final FlutterSecureStorage flutterSecureStorage;
+    late final MockFlutterSecureStorage flutterSecureStorage;
+    late final MockSharedPreferencesService sharedPreferencesService;
 
     setUpAll(() {
       flutterSecureStorage = MockFlutterSecureStorage();
+      sharedPreferencesService = MockSharedPreferencesService();
+
+      when(() => sharedPreferencesService.homeAssistantUrlStream).thenAnswer(
+        (_) => Stream.value('http://localhost:3000'),
+      );
+
       secureStorageService = SecureStorageService(
         flutterSecureStorage: flutterSecureStorage,
+        sharedPreferencesService: sharedPreferencesService,
       );
+    });
+
+    test(
+        'Given the constructor'
+        'When the home assistant url stream returns a string that is empty'
+        'Then it deletes all values in secure storage', () async {
+      final flutterSecureStorage = MockFlutterSecureStorage();
+      final sharedPreferencesService = MockSharedPreferencesService();
+
+      when(flutterSecureStorage.deleteAll).thenAnswer(
+        (_) => Future.value(),
+      );
+      when(() => sharedPreferencesService.homeAssistantUrlStream).thenAnswer(
+        (_) => Stream.value(''),
+      );
+
+      SecureStorageService(
+        flutterSecureStorage: flutterSecureStorage,
+        sharedPreferencesService: sharedPreferencesService,
+      );
+
+      await Future<void>.delayed(const Duration(milliseconds: 200));
+
+      verify(
+        flutterSecureStorage.deleteAll,
+      ).called(1);
+    });
+
+    test(
+        'Given the constructor'
+        'When the home assistant url stream returns a string that is not empty'
+        'Then nothing happens', () async {
+      final flutterSecureStorage = MockFlutterSecureStorage();
+      final sharedPreferencesService = MockSharedPreferencesService();
+
+      when(flutterSecureStorage.deleteAll).thenAnswer(
+        (_) => Future.value(),
+      );
+      when(() => sharedPreferencesService.homeAssistantUrlStream).thenAnswer(
+        (_) => Stream.value('http://localhost:3000'),
+      );
+
+      SecureStorageService(
+        flutterSecureStorage: flutterSecureStorage,
+        sharedPreferencesService: sharedPreferencesService,
+      );
+
+      await Future<void>.delayed(const Duration(milliseconds: 200));
+
+      verifyNever(flutterSecureStorage.deleteAll);
     });
 
     group('readAccessToken', () {
@@ -198,15 +255,13 @@ void main() {
       test(
           'calls FlutterSecureStorage.deleteAll to delete all keys with associated values',
           () async {
-        when(() => flutterSecureStorage.deleteAll()).thenAnswer(
+        when(flutterSecureStorage.deleteAll).thenAnswer(
           (_) => Future.value(),
         );
 
         await secureStorageService.deleteAll();
 
-        verify(
-          () => flutterSecureStorage.deleteAll(),
-        ).called(1);
+        verify(flutterSecureStorage.deleteAll).called(1);
       });
     });
   });
