@@ -21,6 +21,8 @@ void setUp() {
   );
   serviceLocator.registerSingleton<SharedPreferencesService>(
     SharedPreferencesService(),
+    dispose: (sharedPreferencesService) async =>
+        await sharedPreferencesService.dispose(),
   );
   serviceLocator.registerLazySingleton<AuthenticationRepository>(
     () => AuthenticationRepository(),
@@ -54,5 +56,7 @@ void setUp() {
   );
   serviceLocator.registerLazySingleton<SecureStorageService>(
     () => SecureStorageService(),
+    dispose: (secureStorageService) async =>
+        await secureStorageService.dispose(),
   );
 }

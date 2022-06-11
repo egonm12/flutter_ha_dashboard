@@ -15,6 +15,7 @@ Future<void> main() async {
   setUp();
 
   await serviceLocator<SharedPreferencesService>().init();
+  await serviceLocator<AuthenticationRepository>().init();
 
   runApp(
     MultiBlocProvider(

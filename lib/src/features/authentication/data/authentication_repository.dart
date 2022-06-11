@@ -20,7 +20,7 @@ class AuthenticationRepository {
     ApiService? apiService,
     SharedPreferencesService? sharedPreferencesService,
   }) {
-    _authState = BehaviorSubject<bool>.seeded(false);
+    _authState = BehaviorSubject<bool>();
 
     _instance = AuthenticationRepository._internal(
       secureStorageService ?? serviceLocator<SecureStorageService>(),
@@ -42,12 +42,19 @@ class AuthenticationRepository {
     this._sharedPreferencesService,
   );
 
+  /// Checks if there is a valid access token and assigns true or false to [_authState]
+  Future<void> init() async {
+    final validAccessToken = await this.validAccessToken;
+    _authState.value = validAccessToken != null && validAccessToken.isNotEmpty;
+  }
+
   /// Public instance of [AuthenticationRepository]
   static AuthenticationRepository get instance => _instance;
 
   /// Private instance of [AuthenticationRepository]
   static late final AuthenticationRepository _instance;
 
+  /// StreamController that represents the authentication state
   static late final BehaviorSubject<bool> _authState;
 
   late final SecureStorageService _secureStorageService;
@@ -56,7 +63,10 @@ class AuthenticationRepository {
   late final ApiService _apiService;
   late final SharedPreferencesService _sharedPreferencesService;
 
-  Stream<bool> authStateChanges() => _authState.stream;
+  /// Stream of authentication state
+  Stream<bool> get authStateStream => _authState.stream;
+
+  /// Value of [_authState]
   bool get isAuthenticated => _authState.value;
 
   Future<void> dispose() async => await _authState.close();
