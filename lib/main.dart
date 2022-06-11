@@ -13,7 +13,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   setUp();
-
+  await Future<void>.delayed(const Duration(seconds: 1));
   await serviceLocator<SharedPreferencesService>().init();
   await serviceLocator<AuthenticationRepository>().init();
 

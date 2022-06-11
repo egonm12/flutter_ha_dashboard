@@ -6,7 +6,9 @@ import 'package:get_it/get_it.dart';
 import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
+import 'package:flutter_ha_dashboard/src/core/services/web_socket_service.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
+import 'package:flutter_ha_dashboard/src/features/devices/data/devices_repository.dart';
 import 'package:flutter_ha_dashboard/src/utils/app_config.dart';
 
 final GetIt serviceLocator = GetIt.instance;
@@ -19,8 +21,8 @@ void setUp() {
       oauthRedirectUri: 'com.aegon.dashboard:/',
     ),
   );
-  serviceLocator.registerSingleton<SharedPreferencesService>(
-    SharedPreferencesService(),
+  serviceLocator.registerSingletonAsync<SharedPreferencesService>(
+    () async => await SharedPreferencesService.create(),
     dispose: (sharedPreferencesService) async =>
         await sharedPreferencesService.dispose(),
   );
@@ -58,5 +60,13 @@ void setUp() {
     () => SecureStorageService(),
     dispose: (secureStorageService) async =>
         await secureStorageService.dispose(),
+  );
+  serviceLocator.registerSingletonAsync(
+    () async => await WebSocketService.create(),
+    dependsOn: [SharedPreferencesService],
+  );
+  serviceLocator.registerSingletonAsync(
+    () async => await DevicesRepository.create(),
+    dependsOn: [WebSocketService],
   );
 }

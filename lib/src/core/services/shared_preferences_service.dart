@@ -7,30 +7,24 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Service class used as a bridge to communicate with [SharedPreferences].
 /// {@endtemplate}
 class SharedPreferencesService {
-  /// {@macro SharedPreferencesService}
-  factory SharedPreferencesService({
-    SharedPreferences? sharedPreferences,
-  }) {
-    _instance = SharedPreferencesService._internal(sharedPreferences);
+  /// {@macro SecureStorageService}
+  SharedPreferencesService._internal();
 
-    return _instance;
+  static Future<SharedPreferencesService> create({
+    SharedPreferences? sharedPreferences,
+  }) async {
+    // when testing shared preferences can be replaced by a mock
+    _sharedPreferences ??=
+        sharedPreferences ?? await SharedPreferences.getInstance();
+
+    return SharedPreferencesService._internal();
   }
 
-  /// {@macro SecureStorageService}
-  SharedPreferencesService._internal(this._sharedPreferences);
-
-  /// Public instance of [SharedPreferencesService]
-  static SharedPreferencesService get instance => _instance;
-
-  /// Private instance of [SharedPreferencesService]
-  static late SharedPreferencesService _instance;
-  late SharedPreferences? _sharedPreferences;
+  static SharedPreferences? _sharedPreferences;
 
   /// Creates an instance of [SharedPreferences] and assigns it to [_sharedPreferences]
   /// and assigns the [homeAssistantUrl] to [_homeAssistantUrlSubject].
   Future<void> init() async {
-    // when testing shared preferences can be replaced by a mock
-    _sharedPreferences ??= await SharedPreferences.getInstance();
     _homeAssistantUrlSubject.value = homeAssistantUrl;
   }
 
