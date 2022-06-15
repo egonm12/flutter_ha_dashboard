@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:flutter_ha_dashboard/src/core/state/app_bloc.dart';
+import 'package:flutter_ha_dashboard/src/features/areas/presentation/area_list/area_list_screen.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/account/account_screen.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_screen.dart';
@@ -41,6 +42,11 @@ class AppRouter {
       name: RouteName.connect.name,
       builder: (_, __) => const ConnectScreen(),
     ),
+    GoRoute(
+      path: RouteName.areas.path,
+      name: RouteName.areas.name,
+      builder: (_, __) => const AreaListScreen(),
+    ),
   ];
 
   /// Returns the redirect path based on state from [authenticationRepository]
@@ -57,7 +63,7 @@ class AppRouter {
     }
 
     if (isAuthenticated) {
-      return maybeRedirect(state, RouteName.account.path);
+      return maybeRedirect(state, RouteName.areas.path);
     }
     return maybeRedirect(state, RouteName.connect.path);
   }

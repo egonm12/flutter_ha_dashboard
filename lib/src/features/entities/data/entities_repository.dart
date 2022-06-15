@@ -7,8 +7,8 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:flutter_ha_dashboard/service_locator.dart';
 import 'package:flutter_ha_dashboard/src/core/services/web_socket_service.dart';
 
-class DevicesRepository {
-  DevicesRepository._internal() {
+class EntitiesRepository {
+  EntitiesRepository._internal() {
     _webSocketSubscription = _webSocketChannel?.stream.listen((Object? event) {
       if (event is String) {
         final Map<String, dynamic> _json =
@@ -19,11 +19,11 @@ class DevicesRepository {
     });
   }
 
-  static Future<DevicesRepository> create() async {
+  static Future<EntitiesRepository> create() async {
     _webSocketChannel =
         await serviceLocator<WebSocketService>().webSocketChannel;
 
-    final _instance = DevicesRepository._internal();
+    final _instance = EntitiesRepository._internal();
 
     return _instance;
   }
@@ -41,11 +41,11 @@ class DevicesRepository {
     await _webSocketSubscription?.cancel();
   }
 
-  void deviceRegistries(int id) {
+  void entityRegistries(int id) {
     _webSocketChannel?.sink.add(
       json.encode({
         "id": id,
-        "type": "config/device_registry/list",
+        "type": "config/entity_registry/list",
       }),
     );
   }
