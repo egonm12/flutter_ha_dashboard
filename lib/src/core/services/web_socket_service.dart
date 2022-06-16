@@ -24,9 +24,12 @@ class WebSocketService {
     return _instance;
   }
 
-  late final Uri? webSocketUri = Uri.tryParse(
-    'wss://${Uri.tryParse(_sharedPreferencesService.homeAssistantUrl)?.host}/api/websocket',
-  );
+  late final Uri? webSocketUri =
+      _sharedPreferencesService.homeAssistantUrl.isNotEmpty
+          ? Uri.tryParse(
+              'wss://${Uri.tryParse(_sharedPreferencesService.homeAssistantUrl)?.host}/api/websocket',
+            )
+          : null;
 
   final SharedPreferencesService _sharedPreferencesService;
   final AuthenticationRepository _authenticationRepository;

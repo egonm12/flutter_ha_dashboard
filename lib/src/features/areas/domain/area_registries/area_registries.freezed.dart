@@ -219,7 +219,7 @@ AreaRegistry _$AreaRegistryFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AreaRegistry {
   String get areaId => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   String? get picture => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -233,7 +233,7 @@ abstract class $AreaRegistryCopyWith<$Res> {
   factory $AreaRegistryCopyWith(
           AreaRegistry value, $Res Function(AreaRegistry) then) =
       _$AreaRegistryCopyWithImpl<$Res>;
-  $Res call({String areaId, String? name, String? picture});
+  $Res call({String areaId, String name, String? picture});
 }
 
 /// @nodoc
@@ -258,7 +258,7 @@ class _$AreaRegistryCopyWithImpl<$Res> implements $AreaRegistryCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       picture: picture == freezed
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
@@ -274,7 +274,7 @@ abstract class _$$_AreaRegistryCopyWith<$Res>
           _$_AreaRegistry value, $Res Function(_$_AreaRegistry) then) =
       __$$_AreaRegistryCopyWithImpl<$Res>;
   @override
-  $Res call({String areaId, String? name, String? picture});
+  $Res call({String areaId, String name, String? picture});
 }
 
 /// @nodoc
@@ -302,7 +302,7 @@ class __$$_AreaRegistryCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       picture: picture == freezed
           ? _value.picture
           : picture // ignore: cast_nullable_to_non_nullable
@@ -314,7 +314,7 @@ class __$$_AreaRegistryCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AreaRegistry implements _AreaRegistry {
-  const _$_AreaRegistry({required this.areaId, this.name, this.picture});
+  const _$_AreaRegistry({required this.areaId, this.name = '', this.picture});
 
   factory _$_AreaRegistry.fromJson(Map<String, dynamic> json) =>
       _$$_AreaRegistryFromJson(json);
@@ -322,7 +322,8 @@ class _$_AreaRegistry implements _AreaRegistry {
   @override
   final String areaId;
   @override
-  final String? name;
+  @JsonKey()
+  final String name;
   @override
   final String? picture;
 
@@ -363,7 +364,7 @@ class _$_AreaRegistry implements _AreaRegistry {
 abstract class _AreaRegistry implements AreaRegistry {
   const factory _AreaRegistry(
       {required final String areaId,
-      final String? name,
+      final String name,
       final String? picture}) = _$_AreaRegistry;
 
   factory _AreaRegistry.fromJson(Map<String, dynamic> json) =
@@ -372,7 +373,7 @@ abstract class _AreaRegistry implements AreaRegistry {
   @override
   String get areaId => throw _privateConstructorUsedError;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
   @override
   String? get picture => throw _privateConstructorUsedError;
   @override

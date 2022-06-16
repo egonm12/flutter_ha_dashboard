@@ -5,7 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:flutter_ha_dashboard/src/features/areas/data/areas_repository.dart';
 import 'package:flutter_ha_dashboard/src/features/areas/domain/area_registries/area_registries.dart';
+import 'package:flutter_ha_dashboard/src/features/devices/domain/device_registries/device_registries.dart';
 import 'package:flutter_ha_dashboard/src/features/devices/presentation/device_list/device_list_cubit.dart';
+import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_registries.dart';
 import 'package:flutter_ha_dashboard/src/features/entities/presentation/entity_list/entity_list_cubit.dart';
 
 part 'area_list_state.dart';
@@ -21,6 +23,8 @@ class AreaListCubit extends Cubit<AreaListState> {
         super(const AreaListState(
           commandId: 1,
           areas: [],
+          devices: [],
+          entities: [],
         )) {
     _areasRepositorySubscription = _areasRepository.stream.listen((event) {
       try {
@@ -36,11 +40,11 @@ class AreaListCubit extends Cubit<AreaListState> {
         print(e);
       }
     });
-    _deviceListSubscription = _deviceListCubit.stream.listen((state) {
-      print('DEVICES: ${state.devices}');
+    _deviceListSubscription = _deviceListCubit.stream.listen((deviceListState) {
+      emit(state.copyWith(devices: deviceListState.devices));
     });
-    _entityListSubscription = _entityListCubit.stream.listen((state) {
-      print('ENTITIES: ${state.entities}');
+    _entityListSubscription = _entityListCubit.stream.listen((entityListState) {
+      emit(state.copyWith(entities: entityListState.entities));
     });
   }
 

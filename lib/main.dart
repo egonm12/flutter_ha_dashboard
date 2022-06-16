@@ -45,10 +45,12 @@ Future<void> main() async {
           ),
         ),
         BlocProvider<DeviceListCubit>(
-          create: (_) => deviceListCubit,
+          lazy: false,
+          create: (_) => deviceListCubit..deviceRegistries(),
         ),
         BlocProvider<EntityListCubit>(
-          create: (_) => entityListCubit,
+          lazy: false,
+          create: (_) => entityListCubit..entityRegistries(),
         ),
         BlocProvider<AreaListCubit>(
           lazy: false,

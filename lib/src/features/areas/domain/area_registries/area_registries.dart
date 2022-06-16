@@ -20,7 +20,7 @@ class AreaRegistriesDTO with _$AreaRegistriesDTO {
 class AreaRegistry with _$AreaRegistry {
   const factory AreaRegistry({
     required String areaId,
-    String? name,
+    @Default('') String name,
     String? picture,
   }) = _AreaRegistry;
 

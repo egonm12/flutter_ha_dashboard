@@ -28,7 +28,7 @@ Map<String, dynamic> _$$_AreaRegistriesDTOToJson(
 _$_AreaRegistry _$$_AreaRegistryFromJson(Map<String, dynamic> json) =>
     _$_AreaRegistry(
       areaId: json['area_id'] as String,
-      name: json['name'] as String?,
+      name: json['name'] as String? ?? '',
       picture: json['picture'] as String?,
     );
 
