@@ -12,7 +12,9 @@ import 'package:flutter_ha_dashboard/src/app.dart';
 import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
+import 'package:flutter_ha_dashboard/src/core/services/web_socket_service.dart';
 import 'package:flutter_ha_dashboard/src/core/state/app_bloc.dart';
+import 'package:flutter_ha_dashboard/src/features/areas/domain/area_registries/area_registries.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/account/account_cubit.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/account/account_screen.dart';
@@ -21,6 +23,8 @@ import 'package:flutter_ha_dashboard/src/features/authentication/presentation/co
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_form.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/connect_screen.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/presentation/connect/url_text_field.dart';
+import 'package:flutter_ha_dashboard/src/features/devices/domain/device_registries/device_registries.dart';
+import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_registries/entity_registries.dart';
 import 'package:flutter_ha_dashboard/src/routing/route_name.dart';
 import 'package:flutter_ha_dashboard/src/routing/router.dart';
 import 'package:flutter_ha_dashboard/src/theme/base_theme.dart';

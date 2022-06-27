@@ -17,10 +17,10 @@ final TextTheme textTheme = TextTheme(
   ),
   headline4: TextStyle(
     fontSize: AppFontSizes.defaultSizes.s,
-    fontWeight: FontWeight.w500,
+    fontWeight: FontWeight.w800,
   ),
   headline5: TextStyle(
-    fontSize: AppFontSizes.defaultSizes.xs,
+    fontSize: AppFontSizes.defaultSizes.s,
     fontWeight: FontWeight.w500,
   ),
 );

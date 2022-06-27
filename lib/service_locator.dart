@@ -7,10 +7,7 @@ import 'package:flutter_ha_dashboard/src/core/services/api_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/secure_storage_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/shared_preferences_service.dart';
 import 'package:flutter_ha_dashboard/src/core/services/web_socket_service.dart';
-import 'package:flutter_ha_dashboard/src/features/areas/data/areas_repository.dart';
 import 'package:flutter_ha_dashboard/src/features/authentication/data/authentication_repository.dart';
-import 'package:flutter_ha_dashboard/src/features/devices/data/devices_repository.dart';
-import 'package:flutter_ha_dashboard/src/features/entities/data/entities_repository.dart';
 import 'package:flutter_ha_dashboard/src/utils/app_config.dart';
 
 final GetIt serviceLocator = GetIt.instance;
@@ -67,17 +64,5 @@ void setUp() {
   serviceLocator.registerSingletonAsync(
     () async => await WebSocketService.create(),
     dependsOn: [SharedPreferencesService],
-  );
-  serviceLocator.registerSingletonAsync(
-    () async => await AreasRepository.create(),
-    dependsOn: [WebSocketService],
-  );
-  serviceLocator.registerSingletonAsync(
-    () async => await DevicesRepository.create(),
-    dependsOn: [WebSocketService],
-  );
-  serviceLocator.registerSingletonAsync(
-    () async => await EntitiesRepository.create(),
-    dependsOn: [WebSocketService],
   );
 }

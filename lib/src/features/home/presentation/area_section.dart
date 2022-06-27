@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_ha_dashboard/src/features/devices/domain/device_registries/device_registries.dart';
-import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_registries.dart';
+import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_registries/entity_registries.dart';
 
 class AreaSection extends StatelessWidget {
   const AreaSection({

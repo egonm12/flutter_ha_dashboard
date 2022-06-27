@@ -53,7 +53,9 @@ class AppFontSizes extends ThemeExtension<AppFontSizes> {
 
   @override
   ThemeExtension<AppFontSizes> lerp(
-      ThemeExtension<AppFontSizes>? other, double t) {
+    ThemeExtension<AppFontSizes>? other,
+    double t,
+  ) {
     return this;
   }
 }

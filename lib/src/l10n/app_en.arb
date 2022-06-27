@@ -4,5 +4,14 @@
     "description": "Title of the connect page"
   },
   "connectCTA": "Connect",
-  "urlTextFieldPlaceholder": "Home Assistant URL"
+  "urlTextFieldPlaceholder": "Home Assistant URL",
+  "entityTypeLightTitle": "Lights",
+  "entityTypeLightSubtitle": "{count} on",
+  "@entityTypeLightSubtitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }
