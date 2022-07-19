@@ -13,7 +13,7 @@ class DeviceFilterListState extends Equatable {
   final List<DeviceRegistry> devices;
   final List<EntityRegistry> entities;
   final List<EntityState> entityStates;
-  final Event? event;
+  final StateChangeEvent? event;
 
   @override
   List<Object?> get props => [
@@ -29,7 +29,7 @@ class DeviceFilterListState extends Equatable {
     List<DeviceRegistry>? devices,
     List<EntityRegistry>? entities,
     List<EntityState>? entityStates,
-    Event? event,
+    StateChangeEvent? event,
   }) =>
       DeviceFilterListState(
         individualLights: individualLights ?? this.individualLights,

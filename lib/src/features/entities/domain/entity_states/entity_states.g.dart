@@ -43,16 +43,3 @@ Map<String, dynamic> _$$_EntityStateToJson(_$_EntityState instance) =>
       'last_updated': instance.lastUpdated.toIso8601String(),
       'context': instance.context.toJson(),
     };
-
-_$_Context _$$_ContextFromJson(Map<String, dynamic> json) => _$_Context(
-      id: json['id'] as String,
-      parentId: json['parent_id'] as String?,
-      userId: json['user_id'] as String?,
-    );
-
-Map<String, dynamic> _$$_ContextToJson(_$_Context instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'parent_id': instance.parentId,
-      'user_id': instance.userId,
-    };

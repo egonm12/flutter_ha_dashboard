@@ -1,5 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:flutter_ha_dashboard/src/core/domain/context/context.dart';
+import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_states/entity_states.dart';
+
 part 'state_change_dto.freezed.dart';
 part 'state_change_dto.g.dart';
 
@@ -8,7 +11,7 @@ class StateChangeDto with _$StateChangeDto {
   const factory StateChangeDto({
     required int id,
     required String type,
-    required Event event,
+    required StateChangeEvent event,
   }) = _StateChangeDto;
 
   factory StateChangeDto.fromJson(Map<String, dynamic> json) =>
@@ -16,51 +19,26 @@ class StateChangeDto with _$StateChangeDto {
 }
 
 @freezed
-class Event with _$Event {
-  const factory Event({
+class StateChangeEvent with _$StateChangeEvent {
+  const factory StateChangeEvent({
     required String eventType,
     required Data data,
     required String origin,
     required DateTime timeFired,
     required Context context,
-  }) = _Event;
+  }) = _StateChangeEvent;
 
-  factory Event.fromJson(Map<String, dynamic> json) => _$EventFromJson(json);
-}
-
-@freezed
-class Context with _$Context {
-  const factory Context({
-    required String id,
-    String? parentId,
-    String? userId,
-  }) = _Context;
-
-  factory Context.fromJson(Map<String, dynamic> json) =>
-      _$ContextFromJson(json);
+  factory StateChangeEvent.fromJson(Map<String, dynamic> json) =>
+      _$StateChangeEventFromJson(json);
 }
 
 @freezed
 class Data with _$Data {
   const factory Data({
     required String entityId,
-    required State oldState,
-    required State newState,
+    required EntityState oldState,
+    required EntityState newState,
   }) = _Data;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
-}
-
-@freezed
-class State with _$State {
-  const factory State({
-    required String entityId,
-    required String state,
-    required Map<String, dynamic> attributes,
-    required DateTime lastChanged,
-    required DateTime lastUpdated,
-    required Context context,
-  }) = _State;
-
-  factory State.fromJson(Map<String, dynamic> json) => _$StateFromJson(json);
 }

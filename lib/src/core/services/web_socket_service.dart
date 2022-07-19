@@ -35,6 +35,7 @@ class WebSocketService {
   }
 
   static Future<WebSocketService> create({
+    WebSocketChannel? webSocketChannel,
     SharedPreferencesService? sharedPreferencesService,
     AuthenticationRepository? authenticationRepository,
   }) async {
@@ -50,8 +51,9 @@ class WebSocketService {
               )
             : null;
 
-    channel =
-        webSocketUri != null ? WebSocketChannel.connect(webSocketUri) : null;
+    channel = webSocketUri != null
+        ? webSocketChannel ?? WebSocketChannel.connect(webSocketUri)
+        : null;
 
     final _instance = WebSocketService._internal();
 
@@ -82,6 +84,7 @@ class WebSocketService {
     await _webSocketSubscription?.cancel();
   }
 
+  /// Adds a data event to the sink to retrieve a list of area registries
   void areaRegistries() {
     _commandIdSubject.value = commandId + 1;
 
@@ -93,6 +96,7 @@ class WebSocketService {
     );
   }
 
+  /// Adds a data event to the sink to retrieve a list of device registries
   void deviceRegistries() {
     _commandIdSubject.value = commandId + 1;
 
@@ -104,6 +108,7 @@ class WebSocketService {
     );
   }
 
+  /// Adds a data event to the sink to retrieve a list of entity registries
   void entityRegistries() {
     _commandIdSubject.value = commandId + 1;
 
@@ -115,6 +120,7 @@ class WebSocketService {
     );
   }
 
+  /// Adds a data event to the sink to retrieve the entity states
   void entityStates() {
     _commandIdSubject.value = commandId + 1;
 
@@ -126,6 +132,7 @@ class WebSocketService {
     );
   }
 
+  /// Adds a data event to the sink to subscribe to state changes
   void subscribeToStateChanges() {
     _commandIdSubject.value = commandId + 1;
 
@@ -138,6 +145,9 @@ class WebSocketService {
     );
   }
 
+  /// Handles web socket events that are of type 'result'
+  ///
+  /// If the result is of a matching type the value is assigned to [_webSocketSubject]
   void _handleResult(Map<String, dynamic> json) {
     final Object? result = json['result'];
 
@@ -147,42 +157,42 @@ class WebSocketService {
       if (first.containsKey('area_id') &&
           first.containsKey('name') &&
           first.containsKey('picture')) {
-        _webSocketSubject.value = WebSocketEvent.areaRegistryList(
+        _webSocketSubject.value = WebSocketEvent.areaRegistryListUpdate(
           AreaRegistriesDTO.fromJson(json),
         );
       } else if (first.containsKey('entity_id')) {
         first.containsKey('state')
-            ? _webSocketSubject.value = WebSocketEvent.entityStates(
+            ? _webSocketSubject.value = WebSocketEvent.entityStatesUpdate(
                 EntityStatesDTO.fromJson(json),
               )
-            : _webSocketSubject.value = WebSocketEvent.entityRegistryList(
+            : _webSocketSubject.value = WebSocketEvent.entityRegistryListUpdate(
                 EntityRegistriesDto.fromJson(json),
               );
       } else if (first.containsKey('id') &&
           first.containsKey('via_device_id')) {
-        _webSocketSubject.value = WebSocketEvent.deviceRegistryList(
+        _webSocketSubject.value = WebSocketEvent.deviceRegistryListUpdate(
           DeviceRegistriesDTO.fromJson(json),
         );
-      } else {
-        if (kDebugMode) {
-          print('No valid format for result');
-        }
       }
     }
   }
 
+  /// Handles web socket events that are of type 'event'
+  ///
+  /// If the result is of a matching type the value is assigned to [_webSocketSubject]
   void _handleEvent(Map<String, dynamic> json) {
     final event = json['event'] as Map<String, dynamic>;
 
-    if (event['event_type'] == 'state_changed' &&
-        (event['data']['entity_id'] as String).startsWith('light')) {
-      _webSocketSubject.value = WebSocketEvent.stateChange(
+    if (event['event_type'] == 'state_changed') {
+      _webSocketSubject.value = WebSocketEvent.stateChangeUpdate(
         StateChangeDto.fromJson(json),
       );
-    } else {
-      if (kDebugMode) {
-        print('No valid format for event');
-      }
     }
   }
+
+  @visibleForTesting
+  void handleResult(Map<String, dynamic> json) => _handleResult(json);
+
+  @visibleForTesting
+  void handleEvent(Map<String, dynamic> json) => _handleEvent(json);
 }

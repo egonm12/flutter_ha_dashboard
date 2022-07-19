@@ -6,7 +6,7 @@
   "connectCTA": "Connect",
   "urlTextFieldPlaceholder": "Home Assistant URL",
   "entityTypeLightTitle": "Lights",
-  "entityTypeLightSubtitle": "{count} on",
+  "entityTypeLightSubtitle": "{count} On",
   "@entityTypeLightSubtitle": {
     "placeholders": {
       "count": {

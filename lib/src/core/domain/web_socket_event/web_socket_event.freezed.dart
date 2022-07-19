@@ -19,65 +19,69 @@ mixin _$WebSocketEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AreaRegistriesDTO areaRegistriesDTO)
-        areaRegistryList,
+        areaRegistryListUpdate,
     required TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(EntityRegistriesDto entityRegistriesDTO)
-        entityRegistryList,
-    required TResult Function(StateChangeDto stateChangeDto) stateChange,
-    required TResult Function(EntityStatesDTO entityStatesDTO) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(StateChangeDto stateChangeDto) stateChangeUpdate,
+    required TResult Function(EntityStatesDTO entityStatesDTO)
+        entityStatesUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AreaRegistryListEvent value) areaRegistryList,
+    required TResult Function(_AreaRegistryListEvent value)
+        areaRegistryListUpdate,
     required TResult Function(_DeviceRegistryListEvent value)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(_EntityRegistryListEvent value)
-        entityRegistryList,
-    required TResult Function(_EntityStateChange value) stateChange,
-    required TResult Function(_EntityStatesEvent value) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(_EntityStateChange value) stateChangeUpdate,
+    required TResult Function(_EntityStatesEvent value) entityStatesUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -152,7 +156,7 @@ class _$_AreaRegistryListEvent implements _AreaRegistryListEvent {
 
   @override
   String toString() {
-    return 'WebSocketEvent.areaRegistryList(areaRegistriesDTO: $areaRegistriesDTO)';
+    return 'WebSocketEvent.areaRegistryListUpdate(areaRegistriesDTO: $areaRegistriesDTO)';
   }
 
   @override
@@ -178,45 +182,48 @@ class _$_AreaRegistryListEvent implements _AreaRegistryListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AreaRegistriesDTO areaRegistriesDTO)
-        areaRegistryList,
+        areaRegistryListUpdate,
     required TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(EntityRegistriesDto entityRegistriesDTO)
-        entityRegistryList,
-    required TResult Function(StateChangeDto stateChangeDto) stateChange,
-    required TResult Function(EntityStatesDTO entityStatesDTO) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(StateChangeDto stateChangeDto) stateChangeUpdate,
+    required TResult Function(EntityStatesDTO entityStatesDTO)
+        entityStatesUpdate,
   }) {
-    return areaRegistryList(areaRegistriesDTO);
+    return areaRegistryListUpdate(areaRegistriesDTO);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
   }) {
-    return areaRegistryList?.call(areaRegistriesDTO);
+    return areaRegistryListUpdate?.call(areaRegistriesDTO);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (areaRegistryList != null) {
-      return areaRegistryList(areaRegistriesDTO);
+    if (areaRegistryListUpdate != null) {
+      return areaRegistryListUpdate(areaRegistriesDTO);
     }
     return orElse();
   }
@@ -224,41 +231,42 @@ class _$_AreaRegistryListEvent implements _AreaRegistryListEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AreaRegistryListEvent value) areaRegistryList,
+    required TResult Function(_AreaRegistryListEvent value)
+        areaRegistryListUpdate,
     required TResult Function(_DeviceRegistryListEvent value)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(_EntityRegistryListEvent value)
-        entityRegistryList,
-    required TResult Function(_EntityStateChange value) stateChange,
-    required TResult Function(_EntityStatesEvent value) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(_EntityStateChange value) stateChangeUpdate,
+    required TResult Function(_EntityStatesEvent value) entityStatesUpdate,
   }) {
-    return areaRegistryList(this);
+    return areaRegistryListUpdate(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
   }) {
-    return areaRegistryList?.call(this);
+    return areaRegistryListUpdate?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (areaRegistryList != null) {
-      return areaRegistryList(this);
+    if (areaRegistryListUpdate != null) {
+      return areaRegistryListUpdate(this);
     }
     return orElse();
   }
@@ -327,7 +335,7 @@ class _$_DeviceRegistryListEvent implements _DeviceRegistryListEvent {
 
   @override
   String toString() {
-    return 'WebSocketEvent.deviceRegistryList(deviceRegistriesDTO: $deviceRegistriesDTO)';
+    return 'WebSocketEvent.deviceRegistryListUpdate(deviceRegistriesDTO: $deviceRegistriesDTO)';
   }
 
   @override
@@ -354,45 +362,48 @@ class _$_DeviceRegistryListEvent implements _DeviceRegistryListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AreaRegistriesDTO areaRegistriesDTO)
-        areaRegistryList,
+        areaRegistryListUpdate,
     required TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(EntityRegistriesDto entityRegistriesDTO)
-        entityRegistryList,
-    required TResult Function(StateChangeDto stateChangeDto) stateChange,
-    required TResult Function(EntityStatesDTO entityStatesDTO) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(StateChangeDto stateChangeDto) stateChangeUpdate,
+    required TResult Function(EntityStatesDTO entityStatesDTO)
+        entityStatesUpdate,
   }) {
-    return deviceRegistryList(deviceRegistriesDTO);
+    return deviceRegistryListUpdate(deviceRegistriesDTO);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
   }) {
-    return deviceRegistryList?.call(deviceRegistriesDTO);
+    return deviceRegistryListUpdate?.call(deviceRegistriesDTO);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (deviceRegistryList != null) {
-      return deviceRegistryList(deviceRegistriesDTO);
+    if (deviceRegistryListUpdate != null) {
+      return deviceRegistryListUpdate(deviceRegistriesDTO);
     }
     return orElse();
   }
@@ -400,41 +411,42 @@ class _$_DeviceRegistryListEvent implements _DeviceRegistryListEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AreaRegistryListEvent value) areaRegistryList,
+    required TResult Function(_AreaRegistryListEvent value)
+        areaRegistryListUpdate,
     required TResult Function(_DeviceRegistryListEvent value)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(_EntityRegistryListEvent value)
-        entityRegistryList,
-    required TResult Function(_EntityStateChange value) stateChange,
-    required TResult Function(_EntityStatesEvent value) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(_EntityStateChange value) stateChangeUpdate,
+    required TResult Function(_EntityStatesEvent value) entityStatesUpdate,
   }) {
-    return deviceRegistryList(this);
+    return deviceRegistryListUpdate(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
   }) {
-    return deviceRegistryList?.call(this);
+    return deviceRegistryListUpdate?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (deviceRegistryList != null) {
-      return deviceRegistryList(this);
+    if (deviceRegistryListUpdate != null) {
+      return deviceRegistryListUpdate(this);
     }
     return orElse();
   }
@@ -505,7 +517,7 @@ class _$_EntityRegistryListEvent implements _EntityRegistryListEvent {
 
   @override
   String toString() {
-    return 'WebSocketEvent.entityRegistryList(entityRegistriesDTO: $entityRegistriesDTO)';
+    return 'WebSocketEvent.entityRegistryListUpdate(entityRegistriesDTO: $entityRegistriesDTO)';
   }
 
   @override
@@ -532,45 +544,48 @@ class _$_EntityRegistryListEvent implements _EntityRegistryListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AreaRegistriesDTO areaRegistriesDTO)
-        areaRegistryList,
+        areaRegistryListUpdate,
     required TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(EntityRegistriesDto entityRegistriesDTO)
-        entityRegistryList,
-    required TResult Function(StateChangeDto stateChangeDto) stateChange,
-    required TResult Function(EntityStatesDTO entityStatesDTO) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(StateChangeDto stateChangeDto) stateChangeUpdate,
+    required TResult Function(EntityStatesDTO entityStatesDTO)
+        entityStatesUpdate,
   }) {
-    return entityRegistryList(entityRegistriesDTO);
+    return entityRegistryListUpdate(entityRegistriesDTO);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
   }) {
-    return entityRegistryList?.call(entityRegistriesDTO);
+    return entityRegistryListUpdate?.call(entityRegistriesDTO);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (entityRegistryList != null) {
-      return entityRegistryList(entityRegistriesDTO);
+    if (entityRegistryListUpdate != null) {
+      return entityRegistryListUpdate(entityRegistriesDTO);
     }
     return orElse();
   }
@@ -578,41 +593,42 @@ class _$_EntityRegistryListEvent implements _EntityRegistryListEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AreaRegistryListEvent value) areaRegistryList,
+    required TResult Function(_AreaRegistryListEvent value)
+        areaRegistryListUpdate,
     required TResult Function(_DeviceRegistryListEvent value)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(_EntityRegistryListEvent value)
-        entityRegistryList,
-    required TResult Function(_EntityStateChange value) stateChange,
-    required TResult Function(_EntityStatesEvent value) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(_EntityStateChange value) stateChangeUpdate,
+    required TResult Function(_EntityStatesEvent value) entityStatesUpdate,
   }) {
-    return entityRegistryList(this);
+    return entityRegistryListUpdate(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
   }) {
-    return entityRegistryList?.call(this);
+    return entityRegistryListUpdate?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (entityRegistryList != null) {
-      return entityRegistryList(this);
+    if (entityRegistryListUpdate != null) {
+      return entityRegistryListUpdate(this);
     }
     return orElse();
   }
@@ -681,7 +697,7 @@ class _$_EntityStateChange implements _EntityStateChange {
 
   @override
   String toString() {
-    return 'WebSocketEvent.stateChange(stateChangeDto: $stateChangeDto)';
+    return 'WebSocketEvent.stateChangeUpdate(stateChangeDto: $stateChangeDto)';
   }
 
   @override
@@ -707,45 +723,48 @@ class _$_EntityStateChange implements _EntityStateChange {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AreaRegistriesDTO areaRegistriesDTO)
-        areaRegistryList,
+        areaRegistryListUpdate,
     required TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(EntityRegistriesDto entityRegistriesDTO)
-        entityRegistryList,
-    required TResult Function(StateChangeDto stateChangeDto) stateChange,
-    required TResult Function(EntityStatesDTO entityStatesDTO) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(StateChangeDto stateChangeDto) stateChangeUpdate,
+    required TResult Function(EntityStatesDTO entityStatesDTO)
+        entityStatesUpdate,
   }) {
-    return stateChange(stateChangeDto);
+    return stateChangeUpdate(stateChangeDto);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
   }) {
-    return stateChange?.call(stateChangeDto);
+    return stateChangeUpdate?.call(stateChangeDto);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (stateChange != null) {
-      return stateChange(stateChangeDto);
+    if (stateChangeUpdate != null) {
+      return stateChangeUpdate(stateChangeDto);
     }
     return orElse();
   }
@@ -753,41 +772,42 @@ class _$_EntityStateChange implements _EntityStateChange {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AreaRegistryListEvent value) areaRegistryList,
+    required TResult Function(_AreaRegistryListEvent value)
+        areaRegistryListUpdate,
     required TResult Function(_DeviceRegistryListEvent value)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(_EntityRegistryListEvent value)
-        entityRegistryList,
-    required TResult Function(_EntityStateChange value) stateChange,
-    required TResult Function(_EntityStatesEvent value) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(_EntityStateChange value) stateChangeUpdate,
+    required TResult Function(_EntityStatesEvent value) entityStatesUpdate,
   }) {
-    return stateChange(this);
+    return stateChangeUpdate(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
   }) {
-    return stateChange?.call(this);
+    return stateChangeUpdate?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (stateChange != null) {
-      return stateChange(this);
+    if (stateChangeUpdate != null) {
+      return stateChangeUpdate(this);
     }
     return orElse();
   }
@@ -854,7 +874,7 @@ class _$_EntityStatesEvent implements _EntityStatesEvent {
 
   @override
   String toString() {
-    return 'WebSocketEvent.entityStates(entityStatesDTO: $entityStatesDTO)';
+    return 'WebSocketEvent.entityStatesUpdate(entityStatesDTO: $entityStatesDTO)';
   }
 
   @override
@@ -880,45 +900,48 @@ class _$_EntityStatesEvent implements _EntityStatesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(AreaRegistriesDTO areaRegistriesDTO)
-        areaRegistryList,
+        areaRegistryListUpdate,
     required TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(EntityRegistriesDto entityRegistriesDTO)
-        entityRegistryList,
-    required TResult Function(StateChangeDto stateChangeDto) stateChange,
-    required TResult Function(EntityStatesDTO entityStatesDTO) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(StateChangeDto stateChangeDto) stateChangeUpdate,
+    required TResult Function(EntityStatesDTO entityStatesDTO)
+        entityStatesUpdate,
   }) {
-    return entityStates(entityStatesDTO);
+    return entityStatesUpdate(entityStatesDTO);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
   }) {
-    return entityStates?.call(entityStatesDTO);
+    return entityStatesUpdate?.call(entityStatesDTO);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(AreaRegistriesDTO areaRegistriesDTO)? areaRegistryList,
+    TResult Function(AreaRegistriesDTO areaRegistriesDTO)?
+        areaRegistryListUpdate,
     TResult Function(DeviceRegistriesDTO deviceRegistriesDTO)?
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     TResult Function(EntityRegistriesDto entityRegistriesDTO)?
-        entityRegistryList,
-    TResult Function(StateChangeDto stateChangeDto)? stateChange,
-    TResult Function(EntityStatesDTO entityStatesDTO)? entityStates,
+        entityRegistryListUpdate,
+    TResult Function(StateChangeDto stateChangeDto)? stateChangeUpdate,
+    TResult Function(EntityStatesDTO entityStatesDTO)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (entityStates != null) {
-      return entityStates(entityStatesDTO);
+    if (entityStatesUpdate != null) {
+      return entityStatesUpdate(entityStatesDTO);
     }
     return orElse();
   }
@@ -926,41 +949,42 @@ class _$_EntityStatesEvent implements _EntityStatesEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_AreaRegistryListEvent value) areaRegistryList,
+    required TResult Function(_AreaRegistryListEvent value)
+        areaRegistryListUpdate,
     required TResult Function(_DeviceRegistryListEvent value)
-        deviceRegistryList,
+        deviceRegistryListUpdate,
     required TResult Function(_EntityRegistryListEvent value)
-        entityRegistryList,
-    required TResult Function(_EntityStateChange value) stateChange,
-    required TResult Function(_EntityStatesEvent value) entityStates,
+        entityRegistryListUpdate,
+    required TResult Function(_EntityStateChange value) stateChangeUpdate,
+    required TResult Function(_EntityStatesEvent value) entityStatesUpdate,
   }) {
-    return entityStates(this);
+    return entityStatesUpdate(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
   }) {
-    return entityStates?.call(this);
+    return entityStatesUpdate?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AreaRegistryListEvent value)? areaRegistryList,
-    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryList,
-    TResult Function(_EntityRegistryListEvent value)? entityRegistryList,
-    TResult Function(_EntityStateChange value)? stateChange,
-    TResult Function(_EntityStatesEvent value)? entityStates,
+    TResult Function(_AreaRegistryListEvent value)? areaRegistryListUpdate,
+    TResult Function(_DeviceRegistryListEvent value)? deviceRegistryListUpdate,
+    TResult Function(_EntityRegistryListEvent value)? entityRegistryListUpdate,
+    TResult Function(_EntityStateChange value)? stateChangeUpdate,
+    TResult Function(_EntityStatesEvent value)? entityStatesUpdate,
     required TResult orElse(),
   }) {
-    if (entityStates != null) {
-      return entityStates(this);
+    if (entityStatesUpdate != null) {
+      return entityStatesUpdate(this);
     }
     return orElse();
   }

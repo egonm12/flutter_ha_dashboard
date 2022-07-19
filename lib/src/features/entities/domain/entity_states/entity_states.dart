@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:flutter_ha_dashboard/src/core/domain/context/context.dart';
+
 part 'entity_states.freezed.dart';
 part 'entity_states.g.dart';
 
@@ -29,16 +31,4 @@ class EntityState with _$EntityState {
 
   factory EntityState.fromJson(Map<String, dynamic> json) =>
       _$EntityStateFromJson(json);
-}
-
-@freezed
-class Context with _$Context {
-  const factory Context({
-    required String id,
-    String? parentId,
-    String? userId,
-  }) = _Context;
-
-  factory Context.fromJson(Map<String, dynamic> json) =>
-      _$ContextFromJson(json);
 }

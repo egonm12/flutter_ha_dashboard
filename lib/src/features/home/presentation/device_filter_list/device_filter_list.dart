@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_states/entity_states.dart';
 import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_type.dart';
+import 'package:flutter_ha_dashboard/src/features/home/logic/device_filter_list_cubit/device_filter_list_cubit.dart';
 import 'package:flutter_ha_dashboard/src/features/home/presentation/device_filter_list/device_filter.dart';
-import 'package:flutter_ha_dashboard/src/features/home/presentation/device_filter_list/device_filter_list_cubit.dart';
 import 'package:flutter_ha_dashboard/src/utils/build_context_extensions.dart';
 
 class DeviceFilterList extends HookWidget {
@@ -42,4 +43,8 @@ class DeviceFilterList extends HookWidget {
       ],
     );
   }
+
+  /// Returns the number of light entities that have the state 'on'
+  static int countLightStateOn(List<EntityState> lights) =>
+      lights.where((light) => light.state == 'on').length;
 }

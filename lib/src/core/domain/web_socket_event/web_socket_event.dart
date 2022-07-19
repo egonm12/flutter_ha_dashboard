@@ -10,19 +10,19 @@ part 'web_socket_event.freezed.dart';
 
 @freezed
 class WebSocketEvent with _$WebSocketEvent {
-  const factory WebSocketEvent.areaRegistryList(
+  const factory WebSocketEvent.areaRegistryListUpdate(
     AreaRegistriesDTO areaRegistriesDTO,
   ) = _AreaRegistryListEvent;
-  const factory WebSocketEvent.deviceRegistryList(
+  const factory WebSocketEvent.deviceRegistryListUpdate(
     DeviceRegistriesDTO deviceRegistriesDTO,
   ) = _DeviceRegistryListEvent;
-  const factory WebSocketEvent.entityRegistryList(
+  const factory WebSocketEvent.entityRegistryListUpdate(
     EntityRegistriesDto entityRegistriesDTO,
   ) = _EntityRegistryListEvent;
-  const factory WebSocketEvent.stateChange(
+  const factory WebSocketEvent.stateChangeUpdate(
     StateChangeDto stateChangeDto,
   ) = _EntityStateChange;
-  const factory WebSocketEvent.entityStates(
+  const factory WebSocketEvent.entityStatesUpdate(
     EntityStatesDTO entityStatesDTO,
   ) = _EntityStatesEvent;
 }

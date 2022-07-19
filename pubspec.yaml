@@ -71,6 +71,8 @@ dev_dependencies:
   freezed: ^2.0.3+1
   retrofit_generator: '>=4.0.0 <5.0.0'
   bloc_test: ^9.0.3
+  faker: ^2.0.0
+  uuid: ^3.0.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

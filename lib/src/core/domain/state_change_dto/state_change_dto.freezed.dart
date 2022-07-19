@@ -22,7 +22,7 @@ StateChangeDto _$StateChangeDtoFromJson(Map<String, dynamic> json) {
 mixin _$StateChangeDto {
   int get id => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  Event get event => throw _privateConstructorUsedError;
+  StateChangeEvent get event => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,9 +35,9 @@ abstract class $StateChangeDtoCopyWith<$Res> {
   factory $StateChangeDtoCopyWith(
           StateChangeDto value, $Res Function(StateChangeDto) then) =
       _$StateChangeDtoCopyWithImpl<$Res>;
-  $Res call({int id, String type, Event event});
+  $Res call({int id, String type, StateChangeEvent event});
 
-  $EventCopyWith<$Res> get event;
+  $StateChangeEventCopyWith<$Res> get event;
 }
 
 /// @nodoc
@@ -67,13 +67,13 @@ class _$StateChangeDtoCopyWithImpl<$Res>
       event: event == freezed
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
-              as Event,
+              as StateChangeEvent,
     ));
   }
 
   @override
-  $EventCopyWith<$Res> get event {
-    return $EventCopyWith<$Res>(_value.event, (value) {
+  $StateChangeEventCopyWith<$Res> get event {
+    return $StateChangeEventCopyWith<$Res>(_value.event, (value) {
       return _then(_value.copyWith(event: value));
     });
   }
@@ -86,10 +86,10 @@ abstract class _$$_StateChangeDtoCopyWith<$Res>
           _$_StateChangeDto value, $Res Function(_$_StateChangeDto) then) =
       __$$_StateChangeDtoCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String type, Event event});
+  $Res call({int id, String type, StateChangeEvent event});
 
   @override
-  $EventCopyWith<$Res> get event;
+  $StateChangeEventCopyWith<$Res> get event;
 }
 
 /// @nodoc
@@ -121,7 +121,7 @@ class __$$_StateChangeDtoCopyWithImpl<$Res>
       event: event == freezed
           ? _value.event
           : event // ignore: cast_nullable_to_non_nullable
-              as Event,
+              as StateChangeEvent,
     ));
   }
 }
@@ -140,7 +140,7 @@ class _$_StateChangeDto implements _StateChangeDto {
   @override
   final String type;
   @override
-  final Event event;
+  final StateChangeEvent event;
 
   @override
   String toString() {
@@ -180,7 +180,7 @@ abstract class _StateChangeDto implements StateChangeDto {
   const factory _StateChangeDto(
       {required final int id,
       required final String type,
-      required final Event event}) = _$_StateChangeDto;
+      required final StateChangeEvent event}) = _$_StateChangeDto;
 
   factory _StateChangeDto.fromJson(Map<String, dynamic> json) =
       _$_StateChangeDto.fromJson;
@@ -190,19 +190,19 @@ abstract class _StateChangeDto implements StateChangeDto {
   @override
   String get type => throw _privateConstructorUsedError;
   @override
-  Event get event => throw _privateConstructorUsedError;
+  StateChangeEvent get event => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_StateChangeDtoCopyWith<_$_StateChangeDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-Event _$EventFromJson(Map<String, dynamic> json) {
-  return _Event.fromJson(json);
+StateChangeEvent _$StateChangeEventFromJson(Map<String, dynamic> json) {
+  return _StateChangeEvent.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Event {
+mixin _$StateChangeEvent {
   String get eventType => throw _privateConstructorUsedError;
   Data get data => throw _privateConstructorUsedError;
   String get origin => throw _privateConstructorUsedError;
@@ -211,13 +211,15 @@ mixin _$Event {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EventCopyWith<Event> get copyWith => throw _privateConstructorUsedError;
+  $StateChangeEventCopyWith<StateChangeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventCopyWith<$Res> {
-  factory $EventCopyWith(Event value, $Res Function(Event) then) =
-      _$EventCopyWithImpl<$Res>;
+abstract class $StateChangeEventCopyWith<$Res> {
+  factory $StateChangeEventCopyWith(
+          StateChangeEvent value, $Res Function(StateChangeEvent) then) =
+      _$StateChangeEventCopyWithImpl<$Res>;
   $Res call(
       {String eventType,
       Data data,
@@ -230,12 +232,13 @@ abstract class $EventCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
-  _$EventCopyWithImpl(this._value, this._then);
+class _$StateChangeEventCopyWithImpl<$Res>
+    implements $StateChangeEventCopyWith<$Res> {
+  _$StateChangeEventCopyWithImpl(this._value, this._then);
 
-  final Event _value;
+  final StateChangeEvent _value;
   // ignore: unused_field
-  final $Res Function(Event) _then;
+  final $Res Function(StateChangeEvent) _then;
 
   @override
   $Res call({
@@ -285,9 +288,11 @@ class _$EventCopyWithImpl<$Res> implements $EventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
-  factory _$$_EventCopyWith(_$_Event value, $Res Function(_$_Event) then) =
-      __$$_EventCopyWithImpl<$Res>;
+abstract class _$$_StateChangeEventCopyWith<$Res>
+    implements $StateChangeEventCopyWith<$Res> {
+  factory _$$_StateChangeEventCopyWith(
+          _$_StateChangeEvent value, $Res Function(_$_StateChangeEvent) then) =
+      __$$_StateChangeEventCopyWithImpl<$Res>;
   @override
   $Res call(
       {String eventType,
@@ -303,13 +308,15 @@ abstract class _$$_EventCopyWith<$Res> implements $EventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
-    implements _$$_EventCopyWith<$Res> {
-  __$$_EventCopyWithImpl(_$_Event _value, $Res Function(_$_Event) _then)
-      : super(_value, (v) => _then(v as _$_Event));
+class __$$_StateChangeEventCopyWithImpl<$Res>
+    extends _$StateChangeEventCopyWithImpl<$Res>
+    implements _$$_StateChangeEventCopyWith<$Res> {
+  __$$_StateChangeEventCopyWithImpl(
+      _$_StateChangeEvent _value, $Res Function(_$_StateChangeEvent) _then)
+      : super(_value, (v) => _then(v as _$_StateChangeEvent));
 
   @override
-  _$_Event get _value => super._value as _$_Event;
+  _$_StateChangeEvent get _value => super._value as _$_StateChangeEvent;
 
   @override
   $Res call({
@@ -319,7 +326,7 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
     Object? timeFired = freezed,
     Object? context = freezed,
   }) {
-    return _then(_$_Event(
+    return _then(_$_StateChangeEvent(
       eventType: eventType == freezed
           ? _value.eventType
           : eventType // ignore: cast_nullable_to_non_nullable
@@ -346,16 +353,16 @@ class __$$_EventCopyWithImpl<$Res> extends _$EventCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Event implements _Event {
-  const _$_Event(
+class _$_StateChangeEvent implements _StateChangeEvent {
+  const _$_StateChangeEvent(
       {required this.eventType,
       required this.data,
       required this.origin,
       required this.timeFired,
       required this.context});
 
-  factory _$_Event.fromJson(Map<String, dynamic> json) =>
-      _$$_EventFromJson(json);
+  factory _$_StateChangeEvent.fromJson(Map<String, dynamic> json) =>
+      _$$_StateChangeEventFromJson(json);
 
   @override
   final String eventType;
@@ -370,14 +377,14 @@ class _$_Event implements _Event {
 
   @override
   String toString() {
-    return 'Event(eventType: $eventType, data: $data, origin: $origin, timeFired: $timeFired, context: $context)';
+    return 'StateChangeEvent(eventType: $eventType, data: $data, origin: $origin, timeFired: $timeFired, context: $context)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Event &&
+            other is _$_StateChangeEvent &&
             const DeepCollectionEquality().equals(other.eventType, eventType) &&
             const DeepCollectionEquality().equals(other.data, data) &&
             const DeepCollectionEquality().equals(other.origin, origin) &&
@@ -397,24 +404,25 @@ class _$_Event implements _Event {
 
   @JsonKey(ignore: true)
   @override
-  _$$_EventCopyWith<_$_Event> get copyWith =>
-      __$$_EventCopyWithImpl<_$_Event>(this, _$identity);
+  _$$_StateChangeEventCopyWith<_$_StateChangeEvent> get copyWith =>
+      __$$_StateChangeEventCopyWithImpl<_$_StateChangeEvent>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EventToJson(this);
+    return _$$_StateChangeEventToJson(this);
   }
 }
 
-abstract class _Event implements Event {
-  const factory _Event(
+abstract class _StateChangeEvent implements StateChangeEvent {
+  const factory _StateChangeEvent(
       {required final String eventType,
       required final Data data,
       required final String origin,
       required final DateTime timeFired,
-      required final Context context}) = _$_Event;
+      required final Context context}) = _$_StateChangeEvent;
 
-  factory _Event.fromJson(Map<String, dynamic> json) = _$_Event.fromJson;
+  factory _StateChangeEvent.fromJson(Map<String, dynamic> json) =
+      _$_StateChangeEvent.fromJson;
 
   @override
   String get eventType => throw _privateConstructorUsedError;
@@ -428,170 +436,7 @@ abstract class _Event implements Event {
   Context get context => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_EventCopyWith<_$_Event> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Context _$ContextFromJson(Map<String, dynamic> json) {
-  return _Context.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Context {
-  String get id => throw _privateConstructorUsedError;
-  String? get parentId => throw _privateConstructorUsedError;
-  String? get userId => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ContextCopyWith<Context> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ContextCopyWith<$Res> {
-  factory $ContextCopyWith(Context value, $Res Function(Context) then) =
-      _$ContextCopyWithImpl<$Res>;
-  $Res call({String id, String? parentId, String? userId});
-}
-
-/// @nodoc
-class _$ContextCopyWithImpl<$Res> implements $ContextCopyWith<$Res> {
-  _$ContextCopyWithImpl(this._value, this._then);
-
-  final Context _value;
-  // ignore: unused_field
-  final $Res Function(Context) _then;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? parentId = freezed,
-    Object? userId = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      parentId: parentId == freezed
-          ? _value.parentId
-          : parentId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: userId == freezed
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-abstract class _$$_ContextCopyWith<$Res> implements $ContextCopyWith<$Res> {
-  factory _$$_ContextCopyWith(
-          _$_Context value, $Res Function(_$_Context) then) =
-      __$$_ContextCopyWithImpl<$Res>;
-  @override
-  $Res call({String id, String? parentId, String? userId});
-}
-
-/// @nodoc
-class __$$_ContextCopyWithImpl<$Res> extends _$ContextCopyWithImpl<$Res>
-    implements _$$_ContextCopyWith<$Res> {
-  __$$_ContextCopyWithImpl(_$_Context _value, $Res Function(_$_Context) _then)
-      : super(_value, (v) => _then(v as _$_Context));
-
-  @override
-  _$_Context get _value => super._value as _$_Context;
-
-  @override
-  $Res call({
-    Object? id = freezed,
-    Object? parentId = freezed,
-    Object? userId = freezed,
-  }) {
-    return _then(_$_Context(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      parentId: parentId == freezed
-          ? _value.parentId
-          : parentId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: userId == freezed
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_Context implements _Context {
-  const _$_Context({required this.id, this.parentId, this.userId});
-
-  factory _$_Context.fromJson(Map<String, dynamic> json) =>
-      _$$_ContextFromJson(json);
-
-  @override
-  final String id;
-  @override
-  final String? parentId;
-  @override
-  final String? userId;
-
-  @override
-  String toString() {
-    return 'Context(id: $id, parentId: $parentId, userId: $userId)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Context &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.parentId, parentId) &&
-            const DeepCollectionEquality().equals(other.userId, userId));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(parentId),
-      const DeepCollectionEquality().hash(userId));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_ContextCopyWith<_$_Context> get copyWith =>
-      __$$_ContextCopyWithImpl<_$_Context>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ContextToJson(this);
-  }
-}
-
-abstract class _Context implements Context {
-  const factory _Context(
-      {required final String id,
-      final String? parentId,
-      final String? userId}) = _$_Context;
-
-  factory _Context.fromJson(Map<String, dynamic> json) = _$_Context.fromJson;
-
-  @override
-  String get id => throw _privateConstructorUsedError;
-  @override
-  String? get parentId => throw _privateConstructorUsedError;
-  @override
-  String? get userId => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ContextCopyWith<_$_Context> get copyWith =>
+  _$$_StateChangeEventCopyWith<_$_StateChangeEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -602,8 +447,8 @@ Data _$DataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Data {
   String get entityId => throw _privateConstructorUsedError;
-  State get oldState => throw _privateConstructorUsedError;
-  State get newState => throw _privateConstructorUsedError;
+  EntityState get oldState => throw _privateConstructorUsedError;
+  EntityState get newState => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -614,10 +459,10 @@ mixin _$Data {
 abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res>;
-  $Res call({String entityId, State oldState, State newState});
+  $Res call({String entityId, EntityState oldState, EntityState newState});
 
-  $StateCopyWith<$Res> get oldState;
-  $StateCopyWith<$Res> get newState;
+  $EntityStateCopyWith<$Res> get oldState;
+  $EntityStateCopyWith<$Res> get newState;
 }
 
 /// @nodoc
@@ -642,24 +487,24 @@ class _$DataCopyWithImpl<$Res> implements $DataCopyWith<$Res> {
       oldState: oldState == freezed
           ? _value.oldState
           : oldState // ignore: cast_nullable_to_non_nullable
-              as State,
+              as EntityState,
       newState: newState == freezed
           ? _value.newState
           : newState // ignore: cast_nullable_to_non_nullable
-              as State,
+              as EntityState,
     ));
   }
 
   @override
-  $StateCopyWith<$Res> get oldState {
-    return $StateCopyWith<$Res>(_value.oldState, (value) {
+  $EntityStateCopyWith<$Res> get oldState {
+    return $EntityStateCopyWith<$Res>(_value.oldState, (value) {
       return _then(_value.copyWith(oldState: value));
     });
   }
 
   @override
-  $StateCopyWith<$Res> get newState {
-    return $StateCopyWith<$Res>(_value.newState, (value) {
+  $EntityStateCopyWith<$Res> get newState {
+    return $EntityStateCopyWith<$Res>(_value.newState, (value) {
       return _then(_value.copyWith(newState: value));
     });
   }
@@ -670,12 +515,12 @@ abstract class _$$_DataCopyWith<$Res> implements $DataCopyWith<$Res> {
   factory _$$_DataCopyWith(_$_Data value, $Res Function(_$_Data) then) =
       __$$_DataCopyWithImpl<$Res>;
   @override
-  $Res call({String entityId, State oldState, State newState});
+  $Res call({String entityId, EntityState oldState, EntityState newState});
 
   @override
-  $StateCopyWith<$Res> get oldState;
+  $EntityStateCopyWith<$Res> get oldState;
   @override
-  $StateCopyWith<$Res> get newState;
+  $EntityStateCopyWith<$Res> get newState;
 }
 
 /// @nodoc
@@ -701,11 +546,11 @@ class __$$_DataCopyWithImpl<$Res> extends _$DataCopyWithImpl<$Res>
       oldState: oldState == freezed
           ? _value.oldState
           : oldState // ignore: cast_nullable_to_non_nullable
-              as State,
+              as EntityState,
       newState: newState == freezed
           ? _value.newState
           : newState // ignore: cast_nullable_to_non_nullable
-              as State,
+              as EntityState,
     ));
   }
 }
@@ -721,9 +566,9 @@ class _$_Data implements _Data {
   @override
   final String entityId;
   @override
-  final State oldState;
+  final EntityState oldState;
   @override
-  final State newState;
+  final EntityState newState;
 
   @override
   String toString() {
@@ -762,273 +607,18 @@ class _$_Data implements _Data {
 abstract class _Data implements Data {
   const factory _Data(
       {required final String entityId,
-      required final State oldState,
-      required final State newState}) = _$_Data;
+      required final EntityState oldState,
+      required final EntityState newState}) = _$_Data;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$_Data.fromJson;
 
   @override
   String get entityId => throw _privateConstructorUsedError;
   @override
-  State get oldState => throw _privateConstructorUsedError;
+  EntityState get oldState => throw _privateConstructorUsedError;
   @override
-  State get newState => throw _privateConstructorUsedError;
+  EntityState get newState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_DataCopyWith<_$_Data> get copyWith => throw _privateConstructorUsedError;
-}
-
-State _$StateFromJson(Map<String, dynamic> json) {
-  return _State.fromJson(json);
-}
-
-/// @nodoc
-mixin _$State {
-  String get entityId => throw _privateConstructorUsedError;
-  String get state => throw _privateConstructorUsedError;
-  Map<String, dynamic> get attributes => throw _privateConstructorUsedError;
-  DateTime get lastChanged => throw _privateConstructorUsedError;
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  Context get context => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $StateCopyWith<State> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $StateCopyWith<$Res> {
-  factory $StateCopyWith(State value, $Res Function(State) then) =
-      _$StateCopyWithImpl<$Res>;
-  $Res call(
-      {String entityId,
-      String state,
-      Map<String, dynamic> attributes,
-      DateTime lastChanged,
-      DateTime lastUpdated,
-      Context context});
-
-  $ContextCopyWith<$Res> get context;
-}
-
-/// @nodoc
-class _$StateCopyWithImpl<$Res> implements $StateCopyWith<$Res> {
-  _$StateCopyWithImpl(this._value, this._then);
-
-  final State _value;
-  // ignore: unused_field
-  final $Res Function(State) _then;
-
-  @override
-  $Res call({
-    Object? entityId = freezed,
-    Object? state = freezed,
-    Object? attributes = freezed,
-    Object? lastChanged = freezed,
-    Object? lastUpdated = freezed,
-    Object? context = freezed,
-  }) {
-    return _then(_value.copyWith(
-      entityId: entityId == freezed
-          ? _value.entityId
-          : entityId // ignore: cast_nullable_to_non_nullable
-              as String,
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String,
-      attributes: attributes == freezed
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      lastChanged: lastChanged == freezed
-          ? _value.lastChanged
-          : lastChanged // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      lastUpdated: lastUpdated == freezed
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      context: context == freezed
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as Context,
-    ));
-  }
-
-  @override
-  $ContextCopyWith<$Res> get context {
-    return $ContextCopyWith<$Res>(_value.context, (value) {
-      return _then(_value.copyWith(context: value));
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_StateCopyWith<$Res> implements $StateCopyWith<$Res> {
-  factory _$$_StateCopyWith(_$_State value, $Res Function(_$_State) then) =
-      __$$_StateCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {String entityId,
-      String state,
-      Map<String, dynamic> attributes,
-      DateTime lastChanged,
-      DateTime lastUpdated,
-      Context context});
-
-  @override
-  $ContextCopyWith<$Res> get context;
-}
-
-/// @nodoc
-class __$$_StateCopyWithImpl<$Res> extends _$StateCopyWithImpl<$Res>
-    implements _$$_StateCopyWith<$Res> {
-  __$$_StateCopyWithImpl(_$_State _value, $Res Function(_$_State) _then)
-      : super(_value, (v) => _then(v as _$_State));
-
-  @override
-  _$_State get _value => super._value as _$_State;
-
-  @override
-  $Res call({
-    Object? entityId = freezed,
-    Object? state = freezed,
-    Object? attributes = freezed,
-    Object? lastChanged = freezed,
-    Object? lastUpdated = freezed,
-    Object? context = freezed,
-  }) {
-    return _then(_$_State(
-      entityId: entityId == freezed
-          ? _value.entityId
-          : entityId // ignore: cast_nullable_to_non_nullable
-              as String,
-      state: state == freezed
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
-              as String,
-      attributes: attributes == freezed
-          ? _value._attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-      lastChanged: lastChanged == freezed
-          ? _value.lastChanged
-          : lastChanged // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      lastUpdated: lastUpdated == freezed
-          ? _value.lastUpdated
-          : lastUpdated // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-      context: context == freezed
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as Context,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_State implements _State {
-  const _$_State(
-      {required this.entityId,
-      required this.state,
-      required final Map<String, dynamic> attributes,
-      required this.lastChanged,
-      required this.lastUpdated,
-      required this.context})
-      : _attributes = attributes;
-
-  factory _$_State.fromJson(Map<String, dynamic> json) =>
-      _$$_StateFromJson(json);
-
-  @override
-  final String entityId;
-  @override
-  final String state;
-  final Map<String, dynamic> _attributes;
-  @override
-  Map<String, dynamic> get attributes {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_attributes);
-  }
-
-  @override
-  final DateTime lastChanged;
-  @override
-  final DateTime lastUpdated;
-  @override
-  final Context context;
-
-  @override
-  String toString() {
-    return 'State(entityId: $entityId, state: $state, attributes: $attributes, lastChanged: $lastChanged, lastUpdated: $lastUpdated, context: $context)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_State &&
-            const DeepCollectionEquality().equals(other.entityId, entityId) &&
-            const DeepCollectionEquality().equals(other.state, state) &&
-            const DeepCollectionEquality()
-                .equals(other._attributes, _attributes) &&
-            const DeepCollectionEquality()
-                .equals(other.lastChanged, lastChanged) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdated, lastUpdated) &&
-            const DeepCollectionEquality().equals(other.context, context));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(entityId),
-      const DeepCollectionEquality().hash(state),
-      const DeepCollectionEquality().hash(_attributes),
-      const DeepCollectionEquality().hash(lastChanged),
-      const DeepCollectionEquality().hash(lastUpdated),
-      const DeepCollectionEquality().hash(context));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_StateCopyWith<_$_State> get copyWith =>
-      __$$_StateCopyWithImpl<_$_State>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_StateToJson(this);
-  }
-}
-
-abstract class _State implements State {
-  const factory _State(
-      {required final String entityId,
-      required final String state,
-      required final Map<String, dynamic> attributes,
-      required final DateTime lastChanged,
-      required final DateTime lastUpdated,
-      required final Context context}) = _$_State;
-
-  factory _State.fromJson(Map<String, dynamic> json) = _$_State.fromJson;
-
-  @override
-  String get entityId => throw _privateConstructorUsedError;
-  @override
-  String get state => throw _privateConstructorUsedError;
-  @override
-  Map<String, dynamic> get attributes => throw _privateConstructorUsedError;
-  @override
-  DateTime get lastChanged => throw _privateConstructorUsedError;
-  @override
-  DateTime get lastUpdated => throw _privateConstructorUsedError;
-  @override
-  Context get context => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  _$$_StateCopyWith<_$_State> get copyWith =>
-      throw _privateConstructorUsedError;
 }
