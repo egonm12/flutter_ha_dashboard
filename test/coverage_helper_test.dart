@@ -31,8 +31,8 @@ import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_registr
 import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_states/entity_states.dart';
 import 'package:flutter_ha_dashboard/src/features/entities/domain/entity_type.dart';
 import 'package:flutter_ha_dashboard/src/features/home/logic/device_filter_list_cubit/device_filter_list_cubit.dart';
-import 'package:flutter_ha_dashboard/src/features/home/presentation/area_section.dart';
-import 'package:flutter_ha_dashboard/src/features/home/presentation/area_section_list.dart';
+import 'package:flutter_ha_dashboard/src/features/home/presentation/area_section_list/area_section.dart';
+import 'package:flutter_ha_dashboard/src/features/home/presentation/area_section_list/area_section_list.dart';
 import 'package:flutter_ha_dashboard/src/features/home/presentation/device_filter_list/device_filter.dart';
 import 'package:flutter_ha_dashboard/src/features/home/presentation/device_filter_list/device_filter_list.dart';
 import 'package:flutter_ha_dashboard/src/features/home/presentation/home_screen.dart';

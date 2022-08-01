@@ -62,7 +62,8 @@ void setUp() {
         await secureStorageService.dispose(),
   );
   serviceLocator.registerSingletonAsync<WebSocketService>(
-    () async => await WebSocketService.create(),
+    () async => await WebSocketService.create()
+      ..areaRegistries(),
     dependsOn: [SharedPreferencesService],
     dispose: (webSocketService) async => webSocketService.dispose(),
   );

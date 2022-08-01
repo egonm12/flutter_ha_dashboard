@@ -35,7 +35,7 @@ class DeviceFilter extends StatelessWidget {
       ),
       labelPadding: EdgeInsets.symmetric(horizontal: appSizes.p4),
       padding: EdgeInsets.all(appSizes.p12),
-      onSelected: null,
+      onSelected: (_) {},
     );
   }
 }

@@ -23,9 +23,12 @@ class DeviceFilterList extends HookWidget {
     final individualLights =
         context.watch<DeviceFilterListCubit>().state.individualLights;
 
-    return Column(
-      children: [
-        Row(
+    return LayoutBuilder(
+      builder: (context, viewConstraints) => ConstrainedBox(
+        constraints: BoxConstraints(
+          maxHeight: viewConstraints.maxHeight,
+        ),
+        child: Row(
           children: [
             if (individualLights.isNotEmpty)
               DeviceFilter(
@@ -40,7 +43,7 @@ class DeviceFilterList extends HookWidget {
               ),
           ],
         ),
-      ],
+      ),
     );
   }
 

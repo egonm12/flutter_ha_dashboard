@@ -28,4 +28,9 @@ final ThemeData darkTheme = baseTheme.copyWith(
       ),
     ),
   ),
+  textTheme: baseTheme.textTheme.copyWith(
+    headline2: baseTheme.textTheme.headline2!.copyWith(
+      color: AppColors.brightGray,
+    ),
+  ),
 );
